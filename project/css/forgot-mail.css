@@ -15,7 +15,7 @@ body{
     align-items: center;
 }
 .content{
-    padding: 48px 40px 25px;
+    padding: 38px 40px 100px;
     border-style: solid;
     border-width: 1.5px;
     border-color: rgb(187, 185, 185);
@@ -89,6 +89,10 @@ body{
 .picture{
     width:244px;
     height: 244px;
+}
+.next-btn{
+    float: right;
+    margin-right: 6%;
 }
 .feedback{
     color: red;
