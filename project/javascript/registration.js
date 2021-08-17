@@ -1,3 +1,4 @@
+// const axios = require("axios");
 // const submit = document.getElementById("submit");
 // submit.addEventListener("click", validate);
 // function validate(e){
@@ -29,12 +30,12 @@
    
 //       }   
 
-const main_form = document.getElementById('myform')
-const form = document.getElementById('form');
-const form1 = document.getElementById('form1');
-const form2 = document.getElementById('form2');
-const form3 = document.getElementById('form3');
-const form4 = document.getElementById('form4');
+// const main_form = document.getElementById('myform')
+// const form = document.getElementById('form');
+// const form1 = document.getElementById('form1');
+// const form2 = document.getElementById('form2');
+// const form3 = document.getElementById('form3');
+// const form4 = document.getElementById('form4');
 // console.log(document.getElementById('form4'));
 // console.log(document.getElementById('form5'));
 
@@ -59,45 +60,40 @@ $(document).on('click', '#submit', function(e) {
 //function checkInputs(e){
 	e.preventDefault();
 
-    // const first_name=form.value.trim();
-    // const last_name=form1.value.trim();
-    // const username=form2.value.trim();
-    // const password=form3.value.trim();
-    // const confirm=form4.value.trim();
     
     
     if(document.getElementById("form")!=null){
         const first_name=form.value.trim();
           if(first_name===''){
-            $("#feedback_first").text('Please enter a value');
+            $("#feedback_first").text(' enter a value');
         }else if(isFirstName(first_name)){
              $("#feedback_first").text('match');
             // showSuccess(first_name);
         }else{
-             $("#feedback_first").text('Enter a valid input');
+             $("#feedback_first").text('Enter a valid name');
             // showError(first_name);
-         }
+        }
     }
     
     if(document.getElementById("form1")!=null){
         const last_name=form1.value.trim();
         if(last_name===''){
-            $("#feedback_last").text('Please enter a value');
+            $("#feedback_last").text(' enter a value');
         }else if(isLastName(last_name)){
             $("#feedback_last").text('match');
         }else{
-             $("#feedback_last").text('Enter a valid input');
+             $("#feedback_last").text('Enter a valid name');
          }
     }    
 
     if(document.getElementById("form2")!=null){
         const username=form2.value.trim();
      if(username===''){
-        $("#feedback_user").text('Please enter a value');
+        $("#feedback_user").text(' enter a value');
     }else if(isUsername(username)){
         $("#feedback_user").text('match');
     }else{
-         $("#feedback_user").text('Enter a valid input');
+         $("#feedback_user").text('Enter a valid imail');
     }
 }
 
@@ -106,11 +102,11 @@ $(document).on('click', '#submit', function(e) {
 if(document.getElementById("form3")!=null){
     const password=form3.value.trim();
      if(password===''){
-        $("#feedback_pass").text('Please enter a value');
+        $("#feedback_pass").text(' enter a value');
     }else if(isPassword(password)){
         $("#feedback_pass").text('match');
     }else{
-         $("#feedback_pass").text('Enter a valid input');
+         $("#feedback_pass").text('Enter a valid password');
      }
 }
 
@@ -118,11 +114,11 @@ if(document.getElementById("form4") && document.getElementById("form3")!=null){
     const confirm=form4.value.trim();
     const password=form3.value.trim();
      if(confirm===''){
-        $("#feedback_confirm").text('Please enter a value');
+        $("#feedback_confirm").text(' enter a value');
      }else if (password===confirm){
         $("#feedback_confirm").text('match');
      }else{
-        $("#feedback_confirm").text('Please enter a value');
+        $("#feedback_confirm").text(' enter a matching password');
      }
 }
 });
@@ -144,17 +140,6 @@ function isPhone(phone){
     return /[2-9]{1}\d{2}/;
 }
 
-
-// showError=(first_name)=>{
-//     document.getElementById(first_name).addClass("error");
-//     $("#feedback_first").text('Enter a valid input');
-// }
-// showSuccess=(first_name)=>{
-//     document.getElementById(first_name).removeClass("error");
-//     $("#feedback_first").text('match');
-// }
-
-
 /********password-toggle**/
 $(document).on('change', '.password-toggle', function(e) {
 // const passwordToggle = document.querySelector('.password-toggle')
@@ -172,21 +157,63 @@ $(document).on('change', '.password-toggle', function(e) {
 })
 
 
-$(document).on('click', '#sign-in #submit', function(e) {
+// $(document).on('click', '#sign-in #submit', function(e) {
 
-    //function checkInputs(e){
-        e.preventDefault();
-        const username=form2.value.trim();
+//     //function checkInputs(e){
+//         e.preventDefault();
+//         const username=form2.value.trim();
     
     
-         if(username===''){
-            $("#feedback_user").text('Please enter a value');
-        }else if(i){
-            $("#feedback_user").text('match');
-        }else{
-             $("#feedback_user").text('Enter a valid input');
-         }
+//          if(username===''){
+//             $("#feedback_user").text('Please enter a value');
+//         }else if(i){
+//             $("#feedback_user").text('match');
+//         }else{
+//              $("#feedback_user").text('Enter a valid input');
+//          }
     
 
 
-}
+// }
+
+
+
+
+
+
+$( document ).ready(function() {
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#btn");
+    
+    closeBtn.addEventListener("click", ()=>{
+      sidebar.classList.toggle("open");
+    });
+} );
+
+
+// });
+//     const config = {
+//         headers: {
+//             'Content-Type': 'application/json',
+//             // 'Authorization': localStorage.getItem('token')
+//         }
+//     };
+
+//  registration = () => {
+//      const url = {
+//          url:"http://fundoonotes.incubation.bridgelabz.com/api/"
+//      }
+//      const data = {
+//         "firstName": this.state.firt,
+//         "lastName": this.state.las,
+//         "email": "jhdb@gmail.com",
+//         "service": "advance",
+//         "password": "jsbfvjhdbf"
+//      }
+//     axios.post(url , data ,config)
+//     .then(function (response) {
+//         console.log(response);
+//       })
+//       .catch(function (error) {
+//         console.log(error);
+//       });
