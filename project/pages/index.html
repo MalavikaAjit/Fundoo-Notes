@@ -26,24 +26,27 @@
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
                                    <div class="form-outline">
-                                       <input type="text"  name="name" id="form" class="form-control error " />
+                                       <input type="text"  name="name" id="form" class="form-control " />
                                         <label class="form-label" for="form">First Name</label>
                                     </div>
-                                      <div class="feedback" id="feedback_first"></div>
+                                      <div class="feedback" id="errorMessage"></div>
+                                      <div class="feedback" id="successMessage"></div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-outline">
                                         <input type="text" name="name" id="form1" class="form-control" />
                                         <label class="form-label" for="form1">Last Name</label>
                                     </div>
-                                    <div class="feedback" id="feedback_last"></div>
+                                    <div class="feedback" id="errorMessage"></div>
+                                    <div class="feedback" id="successMessage"></div>
                                 </div>
                                 <div class="col-12 col-sm-12">
                                     <div class="form-outline username">
                                         <input type="email" id="form2" class="form-control" />
                                         <label class="form-label" for="form2">Username</label>
                                     </div>
-                                    <div class="feedback" id="feedback_user"></div>
+                                    <div class="feedback" id="errorMessage"></div>
+                                    <div class="feedback" id="successMessage"></div>
                                       <div class="form-text">
                                         You can use letters, numbers &amp; periods
                                       </div>
@@ -60,14 +63,16 @@
                                         <input type="password" id="form3"  class="form-control showPassword " />
                                         <label class="form-label" for="form3">password</label>
                                     </div>
-                                    <div class="feedback" id="feedback_pass"></div>
+                                    <div class="feedback" id="errorMessage"></div>
+                                    <div class="feedback" id="successMessage"></div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="form-outline ">
                                         <input type="password" id="form4" class="form-control" />
                                         <label class="form-label" for="form4">confirm</label>
                                     </div>
-                                    <div class="feedback" id="feedback_confirm"></div>
+                                    <div class="feedback" id="errorMessage"></div>
+                                    <div class="feedback" id="successMessage"></div>
                                 </div>
                             </div>
                             <div class="form-text">
@@ -111,6 +116,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
     <script type="text/javascript" src="../javascript/registration.js"></script>
+    <script type="module/javascript" src="../service/sevice.js"></script>
 </body>
 
 </html>
