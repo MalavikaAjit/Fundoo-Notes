@@ -94,6 +94,21 @@ body{
     float: right;
     margin-right: 6%;
 }
-.feedback{
-    color: red;
+.form-outline.error input{
+    border-color: #e74c3c;     
+}
+.form-outline small{
+    color: #e74c3c;
+    position: absolute;
+    visibility: hidden;
+}
+
+.form-outline.error small{
+    visibility: visible;
+ }
+ .form-text{
+    padding-top: 15px;
+}
+.form-control{
+    margin:6px;
 }

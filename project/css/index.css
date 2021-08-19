@@ -26,9 +26,22 @@ body{
     overflow: hidden;
     
 }
+.form-outline.error input{
+    border-color: #e74c3c;     
+}
+.form-outline small{
+    color: #e74c3c;
+    position: absolute;
+    visibility: hidden;
+}
+
+.form-outline.error small{
+    visibility: visible;
+ }
 .form-content{
     width: 100%;
 }
+
 .title{
     font-size: 26px;
     padding-bottom: 22px;
@@ -95,9 +108,10 @@ body{
 .next-btn{
     float: right;
 }
-.feedback{
-    color: red;
+
+.form-text{
+    padding-top: 15px;
 }
-.error{
-    color: red;
+.form-control{
+    margin:6px;
 }
