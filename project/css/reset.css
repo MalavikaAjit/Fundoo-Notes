@@ -102,3 +102,9 @@ body{
 .form-outline.error small{
     visibility: visible;
  }
+ .form-text{
+    padding-top: 15px;
+}
+.form-control{
+    margin:6px;
+}

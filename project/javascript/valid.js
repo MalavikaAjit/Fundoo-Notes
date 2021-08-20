@@ -1,128 +1,204 @@
 // import {registration} from '../service/sevice'
-const firstName= document.getElementById('firstName');
-const lastName= document.getElementById('lastName');
-const username= document.getElementById('username');
-const password= document.getElementById('password');
-const password2= document.getElementById('password2');
+const firstName = document.getElementById('firstName');
+const lastName = document.getElementById('lastName');
+const username = document.getElementById('username');
+const password = document.getElementById('password');
+const password2 = document.getElementById('password2');
 var error = false;
 const baseUrl = "http://fundoonotes.incubation.bridgelabz.com/api/";
 
-
-
-function showError(input, message){
-    const formControl = input.parentElement;
-    formControl.className = 'form-outline error';
-    const small = formControl.querySelector('small');
-    small.innerText = message;
-    error= true;
-}
-
-function showSuccess(input){
-    const formControl = input.parentElement;
-    formControl.className = 'form-outline success';
-    error= false;
-}
-function checkRequired(inputArr){
-     inputArr.forEach(input => {
-        if(input.value.trim() === ''){
-              showError(input,`${input.id} required`);
+const head = {
+  headers: {
+          // 'Accept': 'application/json',charset=UTF-8',
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('token')
         }
-        else{
-             showSuccess(input);
-        }
-        
-    });
 }
 
-const validate =()=>{
-  checkRequired([firstName,lastName,username,password,password2]);
-  if(true){
-    let data = {
-        "firstName": firstName.value,
-        "lastName": lastName.value,
-        "email":username.value,
-        "service": "advance",
-        "password": password.value
+
+
+function showError(input, message) {
+  const formControl = input.parentElement;
+  formControl.className = 'form-outline error';
+  const small = formControl.querySelector('small');
+  small.innerText = message;
+  error = true;
+}
+
+function showSuccess(input) {
+  const formControl = input.parentElement;
+  formControl.className = 'form-outline success';
+  error = false;
+}
+function checkRequired(inputArr) {
+  inputArr.forEach(input => {
+    if (input.value.trim() === '') {
+      showError(input, `${input.id} required`);
     }
-    registration(data)
-  }
- 
+    else {
+      showSuccess(input);
+    }
+
+  });
 }
 
-const signvalidate =()=>{
-    console.log("inside ")
-  checkRequired([username,password]);
-  if(true){
-    let data = {
-      "email":username.value,
+const validate = () => {
+  checkRequired([firstName, lastName, username, password, password2]);    //validatenotes() check([description])
+  if (true) {
+    let data = {                         //title &description
+      "firstName": firstName.value,
+      "lastName": lastName.value,
+      "email": username.value,
       "service": "advance",
       "password": password.value
     }
+    registration(data)              //note(data)
+  }
+
+}
+
+const signvalidate = () => {
+
+  checkRequired([username, password]);
+  if (true) {
+    let data = {
+      "email": username.value,
+      "password": password.value
+    }
     signin(data);
-}
-}
- 
-
-const forgotValidate =()=>{
-  console.log("inside ")
-checkRequired([username]);
-if(true){
-  let data = {
-    "email":username.value,
-    "service": "advance",
   }
- forgotmail(data);
-}
 }
 
-const resetValidate =()=>{
-  console.log("inside ")
-checkRequired([username,password,password2]);
-if(true){
-  let data = {
-    "email":username.value,
-    "service": "advance",
-    "password": password.value
+
+const forgotValidate = () => {
+
+  checkRequired([username]);
+  if (true) {
+    let data = {
+      "email": username.value,
+    }
+    forgotmail(data);
   }
- resetPwd(data);
-}
 }
 
-function resetPwd(data){
+const resetValidate = () => {
 
-  servicereq('user/reset','post',data)
-
-}
-function signin(data){
-
-  servicereq('user/login','post',data)
-
-}
- function registration(data){
-
-    servicereq('user/userSignUp','post',data)
- 
+  checkRequired([ password, password2]);
+  if (true) {
+    let data = {
+      "email": username.value,
+      "password": password.value
+    }
+    resetPwd(data);
+  }
 }
 
- function forgotmail(data){
+function resetPwd(data) {
 
-  servicereq('user/userSignUp','post',data)
+  servicereq('user/reset', 'post', data)
 
 }
- 
- function servicereq (url,meth,data){
-  fetch(baseUrl+url,{  
-    method:meth,
+function signin(data) {
+
+  var res =servicereq('user/login', 'post', data, 'login');
+  console.log(r)
+
+}
+function registration(data) {           //notes(data)
+
+  servicereq('user/userSignUp', 'post', data)       //notesreq('root','post',data)
+
+}
+
+function forgotmail(data) {
+
+  servicereq('user/reset', 'post', data)
+
+}
+
+const getnote =()=>{
+  servicereq('/notes/getNotesList', 'get', {})
+}
+
+
+
+
+
+function servicereq(url, meth, data, page) {
+  console.log(head);
+  fetch(baseUrl + url, {
+    method: meth,
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json;charset=UTF-8'
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
     },
-    body:  JSON.stringify(data)
-    })
+    body: JSON.stringify()
+  })
+    .then(response => response.json()) //resolve promises
     .then(result => {
-       return console.log('Success:', result);
+      if (page === "login") {               
+        localStorage.setItem("token", result.id);
+        document.location.href('dashboard.html')
+      }
+      getnote();
+      return console.log('Success:', result);
+
     })
     .catch(error => {
       console.error('Error:', error);
     });
- }
+}
+
+
+/*****notes***/
+
+
+
+
+
+const addNotes = () => {
+  const description = document.getElementById('note-text').value;
+  const title = document.getElementById('note-title').value;
+  
+  //validatenotes() check([description])
+  if(description !== '' && title !== ''){
+    let data = {                         //title &description
+      "title": title,
+      "description": description
+    }
+    // notesreq('notes/addNotes','post', data)
+    servicereq('notes/addNotes','post', data)
+  }
+}
+ 
+
+// function notesValidation(data) {           //notes(data)
+  // let data = {                         //title &description
+  //   "title": '',
+  //   "description": description
+  // }
+//   if(document.getElementById('note-text'))
+//  var res = notesreq('notes/addNotes','post', data)       //notesreq('root','post',data)
+
+// }
+
+
+// function notesreq(url, meth, data) {
+//   fetch(baseUrl + url, {
+//     method: meth,
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json;charset=UTF-8',
+//       'Authorization': localStorage.getItem('token')
+//     },
+//     body: JSON.stringify(data)
+//   })
+//     .then(response => response.json()) //resolve promises
+//     .then(result => {               //result from the previous line //note->124 to 126 x
+//       return console.log('Success:', result);
+
+//     })
+//     .catch(error => {
+//       console.error('Error:', error);
+//     });
+// }

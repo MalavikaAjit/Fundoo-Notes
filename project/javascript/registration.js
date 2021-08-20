@@ -268,20 +268,19 @@ $( document ).ready(function() {
 /****toggle text field***/
 
 
-$(document).ready(function(){
-    $('#form').click(function(){
-      $('#form').addClass('form-open');
+// $(document).ready(function(){
+//     $('#form').click(function(){
+//       $('#form').addClass('form-open');
+//       document.querySelector("#note-title").style.display = "block";
+//       document.querySelector("#form-buttons").style.display = "block";
+//     });
+// });
+
+function openNotes(){
+  // $('#form').addClass('form-open');
       document.querySelector("#note-title").style.display = "block";
       document.querySelector("#form-buttons").style.display = "block";
-    });
-});
-$(document).ready(function(){
-    $('#form-close-button').click(function(){
-      $('#form').removeClass('form-open');
-      document.querySelector("#note-title").style.display = "none";
-      document.querySelector("#form-buttons").style.display = "none";
-    });
-});
+}
 
 
 
