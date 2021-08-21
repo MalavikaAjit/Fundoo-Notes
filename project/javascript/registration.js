@@ -268,23 +268,42 @@ $( document ).ready(function() {
 /****toggle text field***/
 
 
-// $(document).ready(function(){
-//     $('#form').click(function(){
-//       $('#form').addClass('form-open');
-//       document.querySelector("#note-title").style.display = "block";
-//       document.querySelector("#form-buttons").style.display = "block";
-//     });
-// });
-
 function openNotes(){
   // $('#form').addClass('form-open');
       document.querySelector("#note-title").style.display = "block";
       document.querySelector("#form-buttons").style.display = "block";
 }
 
+function closeNotes(){
+  document.querySelector("#note-title").style.display = "none";
+  document.querySelector("#form-buttons").style.display = "none";
+  document.getElementById('note-text').value='';
+  document.getElementById('note-title').value='';
+}
 
 
-  
+const placeholder = document.querySelector("#placeholder");
+const notesField = document.querySelector("#notes");
+const notes = JSON.parse(localStorage.getItem('notes')) || []; 
+function displayNotes() {
+  const hasNotes = notes.length > 0;
+  placeholder.style.display = hasNotes ? 'none' : 'flex';
+   notesField.innerHTML = notes.map(note => `
+      <div class="note">
+        <div class="note-title">${note.title}</div>
+        <div class="note-text">${note.description}</div>
+        <div class="toolbar-container">
+          <div class="toolbar">
+            hello
+          </div>
+        </div>
+      </div>
+   `).join("");
+displayNotes();
+
+
+
+//add onload 
 
 
 

@@ -223,6 +223,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 20px;
 }
 
 #note-text {
@@ -323,7 +324,7 @@ input:focus {
   padding :0px !important;
 }
 
-#submit-button,
+
 #form-close-button {
   margin: 0.2em 0;
   box-sizing: border-box;
@@ -347,7 +348,7 @@ input:focus {
   background-color: #007bff;
 }
 
-#submit-button:hover,
+
 #form-close-button:hover {
   filter: brightness(95%);
 }
@@ -365,9 +366,8 @@ input:focus {
   overflow: hidden;
   position: relative;
   border-radius: 8px;
-  transition-duration: 0.218s;
-  transition-property: background, border, opacity, box-shadow, transform;
-  transition-timing-function: ease-in;
+  
+  
 }
 
 .note:hover {
@@ -415,15 +415,13 @@ input:focus {
   line-height: 26px;
   margin: 4px 0;
   position: relative;
-  transition: opacity 0.218s ease-in-out, background-color 0.218s ease-in-out,
-    box-shadow 0.218s ease-in-out;
 }
 
 .toolbar:hover {
   opacity: 1;
 }
 
-.toolbar-color,
+/* .toolbar-color,
 .toolbar-delete {
   height: 20px;
   margin: 0 8px;
@@ -464,8 +462,8 @@ input:focus {
 
 .color-option:hover {
   border: 1px solid black;
-}
-
+} */
+/* 
 .modal {
   position: fixed;
   left: 0;
@@ -476,10 +474,10 @@ input:focus {
   background-color: rgba(229, 229, 229, 0.5);
   opacity: 0;
   visibility: hidden; /* keeps modal closed unless clicked on */
-  transform: scale(1.1);
+  /* transform: scale(1.1);
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-}
-
+} */
+/* 
 .modal-content {
   box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.302),
     0 4px 8px 3px rgba(60, 64, 67, 0.149);
@@ -515,9 +513,9 @@ input:focus {
 
 .modal-close-button:hover {
   background-color: rgba(95, 99, 104, 0.039);
-}
+} */
 
-.open-modal {
+/* .open-modal {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
@@ -538,7 +536,7 @@ input:focus {
 
 #teal {
   background: #a7ffeb;
-}
+}  */
 
 /* .home-section .text {
   display: inline-block;

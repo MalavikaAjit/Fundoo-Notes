@@ -7,13 +7,13 @@ const password2 = document.getElementById('password2');
 var error = false;
 const baseUrl = "http://fundoonotes.incubation.bridgelabz.com/api/";
 
-const head = {
-  headers: {
-          // 'Accept': 'application/json',charset=UTF-8',
-          'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem('token')
-        }
-}
+// const head = {
+//   headers: {
+//           // 'Accept': 'application/json',charset=UTF-8',
+//           'Content-Type': 'application/json',
+//           'Authorization': localStorage.getItem('token')
+//         }
+// }
 
 
 
@@ -100,8 +100,8 @@ function resetPwd(data) {
 }
 function signin(data) {
 
-  var res =servicereq('user/login', 'post', data, 'login');
-  console.log(r)
+  servicereq('user/login', 'post', data, 'login');
+  
 
 }
 function registration(data) {           //notes(data)
@@ -116,31 +116,23 @@ function forgotmail(data) {
 
 }
 
-const getnote =()=>{
-  servicereq('/notes/getNotesList', 'get', {})
-}
 
-
-
-
-
-function servicereq(url, meth, data, page) {
-  console.log(head);
+function servicereq(url, meth, data, page) {  
+  
   fetch(baseUrl + url, {
     method: meth,
     headers: {
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('token')
     },
-    body: JSON.stringify()
+    body: JSON.stringify(data)
   })
     .then(response => response.json()) //resolve promises
     .then(result => {
       if (page === "login") {               
         localStorage.setItem("token", result.id);
-        document.location.href('dashboard.html')
+        window.location.href = 'dashboard.html';
       }
-      getnote();
       return console.log('Success:', result);
 
     })
@@ -150,9 +142,37 @@ function servicereq(url, meth, data, page) {
 }
 
 
+
+
+
+
+
 /*****notes***/
 
+function addNotesreq(url, meth, data, page) {  ////req for add notes 
+  
+  fetch(baseUrl + url, {
+    method: meth,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json()) //resolve promises
+    .then(result => {
+      if(page === "addNote")
+      {
+         getnote();
+         
+       }
+      return console.log('Success:', result);
 
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
 
 
@@ -167,9 +187,42 @@ const addNotes = () => {
       "description": description
     }
     // notesreq('notes/addNotes','post', data)
-    servicereq('notes/addNotes','post', data)
+    addNotesreq('notes/addNotes','post', data,"addNote")
+    }else{
+    closeNotes();
   }
 }
+
+
+const getnote =()=>{
+  getNotereq('/notes/getNotesList', 'get')
+}
+
+
+function getNotereq(url, meth) {     //req for get note 
+  fetch(baseUrl + url, {
+    method: meth,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    // body: JSON.stringify(data)
+  })
+    .then(response => response.json()) //resolve promises
+    .then(result => {            
+        localStorage.setItem("notes", JSON.stringify(result.data.data));
+        displayNotes();
+        // window.location.href = 'dashboard.html';
+      return console.log('Success:', result.data.data);
+
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+getnote();
+
  
 
 // function notesValidation(data) {           //notes(data)
@@ -202,3 +255,4 @@ const addNotes = () => {
 //       console.error('Error:', error);
 //     });
 // }
+ 
