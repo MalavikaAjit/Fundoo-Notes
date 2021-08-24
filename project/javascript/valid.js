@@ -209,8 +209,12 @@ function getNotereq(url, meth) {     //req for get note
     // body: JSON.stringify(data)
   })
     .then(response => response.json()) //resolve promises
-    .then(result => {            
-        localStorage.setItem("notes", JSON.stringify(result.data.data));
+    .then(result => {  
+      let dataObj = result.data.data; 
+      let newNote = dataObj.filter(
+        (i) => (i.isArchived || i.isDeleted) === false
+      );         
+        localStorage.setItem("notes", JSON.stringify(newNote));
         displayNotes();
         // window.location.href = 'dashboard.html';
       return console.log('Success:', result.data.data);
@@ -222,6 +226,48 @@ function getNotereq(url, meth) {     //req for get note
 }
 
 getnote();
+
+/***delete note***/
+
+
+function deleteNote(id){
+  let data = {
+    noteIdList: [id],
+    isDeleted: true
+}
+deleteNotereq('/notes/trashNotes' , 'post', data)
+}
+
+function deleteNotereq(url, meth,data) {  
+  
+  fetch(baseUrl + url, {
+    method: meth,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response =>  
+    {
+      getnote();
+        return console.log('notes deleted');
+        
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+
+
+
+
+ 
+
+
+ 
 
  
 

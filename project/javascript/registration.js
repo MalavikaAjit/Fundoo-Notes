@@ -284,8 +284,9 @@ function closeNotes(){
 
 const placeholder = document.querySelector("#placeholder");
 const notesField = document.querySelector("#notes");
-const notes = JSON.parse(localStorage.getItem('notes')) || []; 
+
 function displayNotes() {
+  const notes = JSON.parse(localStorage.getItem('notes')) || []; 
   const hasNotes = notes.length > 0;
   placeholder.style.display = hasNotes ? 'none' : 'flex';
    notesField.innerHTML = notes.map(note => `
@@ -293,18 +294,34 @@ function displayNotes() {
         <div class="note-title">${note.title}</div>
         <div class="note-text">${note.description}</div>
         <div class="toolbar-container">
-          <div class="toolbar">
-            hello
+          <div class="toolbar">         
+          <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
+         
+          <i class="material-icons">more_vert</i> 
+          <i class="material-icons">archive</i>
+          <i class="material-icons">palette</i> 
+          <i class="material-icons">person_add_alt</i> 
+          <i class="material-icons">add_alert</i>       
           </div>
         </div>
       </div>
    `).join("");
+}
 displayNotes();
 
 
 
-//add onload 
+/*****modal for collaborators***/
 
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+
+
+
+
+
+//add onload 
 
 
 
