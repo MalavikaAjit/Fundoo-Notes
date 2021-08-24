@@ -259,6 +259,62 @@ function deleteNotereq(url, meth,data) {
     });
 }
 
+/***collaborators **/
+
+
+function collabreq(url, meth, data) {  ////req for add notes 
+  
+  fetch(baseUrl + url, {
+    method: meth,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json()) //resolve promises
+    .then(result => {
+      let collabArr = result.data.details;
+      let collabresult = collabArr.map(e => e.email)
+         console.log('Success:', collabresult);
+
+    })
+    // .then(re => {
+    //   console.log( re);
+    // })
+     .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+// const searchUser = () => { 
+//   //validatenotes() check([description])
+//   if(description !== '' && title !== ''){
+//     let data = {
+//       searchWord: e.target.value,
+//     };
+//     // notesreq('notes/addNotes','post', data)
+//     addNotesreq('notes/addNotes','post', data,"addNote")
+//     }else{
+//     closeNotes();
+//   }
+// }
+
+function searchUser(){
+ const userValue = document.getElementById('searchValue').value;
+ if(userValue !== ''){
+  let data = {
+    searchWord: userValue
+  };
+  collabreq('/user/searchUserList','post',data);
+ }
+//  console.log(some_fun);
+}
+
+
+
+
 
 
 
