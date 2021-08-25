@@ -1,239 +1,4 @@
-// import {registration} from '../service/sevice';
-// var axios = require("axios");
-// const axios = require("axios");
 
-// const submit = document.getElementById("submit");
-// submit.addEventListener("click", validate);
-// function validate(e){
-//     e.preventDefault();
-//     var input_name =document.getElementById('form');
-//        var nameRegex = /^[A-Za-z]{1,32}$/;
-//         if (!input_name.value) {
-//             $("#feedback_first").text('Please enter a value');
-//         }else if(nameRegex.test(input_name.value)){
-//             $("#feedback_first").text('match');
-//         }else{
-//             $("#feedback_first").text('Enter a valid input');
-//         }
-
-//    }
-// submit = document.getElementById("submit");
-// submit.addEventListener("click", validate);
-// function validate_pass(e){
-//        e.preventDefault();
-//        var input_pass =document.getElementById('form3');
-//           var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$/;
-//            if (!input_pass.value) {
-//                $("#feedback_pass").text('Please enter a value');
-//            }else if(passRegex.test(input_pass.value)){
-//                $("#feedback_pass").text('match');
-//            }else{
-//                $("#feedback_pass").text('Enter a valid input');
-//            }
-   
-//       }   
-
-// const main_form = document.getElementById('myform')
-// const form = document.getElementById('form');
-// const form1 = document.getElementById('form1');
-// const form2 = document.getElementById('form2');
-// const form3 = document.getElementById('form3');
-// const form4 = document.getElementById('form4');
-// console.log(document.getElementById('form4'));
-// console.log(document.getElementById('form5'));
-
-
-// main_form.addEventListener("submit",(e) => {
-    // e.preventDefault();
-//     checkInputs();
-// });
-// $(document).on("keyup", "#form1", function(e) {
-               
-//     const last_name=form1.value.trim();
-//     if(last_name===''){
-//         $("#feedback_last").text('Please enter a value');
-//     }else if(isLastName(last_name)){
-//         $("#feedback_last").text('match');
-//     }else{
-//          $("#feedback_last").text('Enter a valid input');
-//      }
-//         });
-
-
-
-// $("#submit").click(function(){
-
-//     var errorMessage = "";
-
-//     // var errorMessage = "";
-
-//     if ($("#form").val() == "") {
-
-//         errorMessage += "<br>first_Nmae";
-//     }
-//         if ($("#form1").val() == "") {
-
-//         errorMessage += "<br>last_name";
-//     }
-
-//         if ($("#form2").val() == "") {
-
-//         errorMessage += "<br>username";
-//     }
-
-//     if ($("#form3").val() == "") {
-
-//         errorMessage += "<br>password";
-//     }
-
-//     if ($("#form4").val() == "") {
-
-//         errorMessage += "<br>confirm";
-//     }
-
-
-    //     if ($("#passwordconfirm").val() == "") {
-
-    //     errorMessage += "<br>Confirm password";
-    // }
-
-
-    // if (errorMessage != "") {
-    //     errorMessage += "<p>The following field(s) are missing" + errorMessage;
-    // }	
-
-
-    // if (isEmail($("#email").val()) == false ) {
-    //     errorMessage += "<p>Your Email address is not valid</p>";
-    // }
-
-    // if ($.isNumeric($("#phone").val()) == false) {
-    //     errorMessage += "<p> Your phone Number is not valid</p>";
-    // }
-
-    // if ($("#password").val() != $("#passwordconfirm").val()) {
-    //     errorMessage += "<p> Your Password does not match</p>";
-    // }
-    
-//     if (errorMessage != "") {
-//         $("#errorMessage").html(errorMessage);
-//     } else {
-//         // $("#successMessage").show();
-//         registration;
-        
-//         $("#errorMessage").hide();
-//     }
-
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $(document).on('click', '#submit', function(e) {
-
-// //function checkInputs(e){
-// 	e.preventDefault();
-//     const first_name=form.value.trim();
-//     const last_name=form1.value.trim();
-//     const username=form2.value.trim();
-//     const password=form3.value.trim();
-//     const confirm=form4.value.trim();
-    
-    
-  
-        
-//           if(first_name===''){
-//             $("#feedback_first").text(' enter first name');
-//         }else if(isFirstName(first_name)){
-//              $("#feedback_first").text('match');
-//             // showSuccess(first_name);
-//         }else{
-//              $("#feedback_first").text('Enter a valid first name');
-//             // showError(first_name);
-//         }
-    
-    
-   
-        
-//         if(last_name===''){
-//             $("#feedback_last").text(' enter last name');
-//         }else if(isLastName(last_name)){
-//             $("#feedback_last").text('match');
-//         }else{
-//              $("#feedback_last").text('Enter a valid name');
-//          }
-      
-
-    
-       
-//      if(username===''){
-//         $("#feedback_user").text(' enter a value');
-//     }else if(isUsername(username)){
-//         $("#feedback_user").text('match');
-//     }else{
-//          $("#feedback_user").text('Enter a valid imail');
-//     }
-
-
-
-
-
-   
-//      if(password===''){
-//         $("#feedback_pass").text(' enter a value');
-//     }else if(isPassword(password)){
-//         $("#feedback_pass").text('match');
-//     }else{
-//          $("#feedback_pass").text('Enter a valid password');
-//      }
-
-
-
-    
-    
-//      if(confirm===''){
-//         $("#feedback_confirm").text(' enter a value');
-//      }else if (password===confirm){
-//         $("#feedback_confirm").text('match');
-//      }else{
-//         $("#feedback_confirm").text(' enter a matching password');
-//      }
-
-// });
-
-// function isFirstName(first_name){
-//     return /^[A-Za-z]{1,32}$/.test(first_name);
-// }
-// function isLastName(last_name){
-//     return /^[A-Za-z]{1,32}$/.test(last_name);
-// }
-
-// function isPassword(password){
-//     return /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$/.test(password);
-// }
-// function isUsername(username){
-//     return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(username)
-// }
-// function isPhone(phone){
-//     return /[2-9]{1}\d{2}/;
-// }
 
 /********password-toggle**/
 $(document).on('change', '.password-toggle', function(e) {
@@ -287,6 +52,8 @@ const notesField = document.querySelector("#notes");
 
 function displayNotes() {
   const notes = JSON.parse(localStorage.getItem('notes')) || []; 
+  const userValue = document.getElementById('searchValue').value;
+  let firstLetter = userValue.charAt(1);
   const hasNotes = notes.length > 0;
   placeholder.style.display = hasNotes ? 'none' : 'flex';
    notesField.innerHTML = notes.map(note => `
@@ -317,52 +84,64 @@ $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
 
+/******/
 
+// function addCollabIcon(){
+//   const userValue = document.getElementById('searchValue').value;
+//   let firstLetter = userValue.charAt(1);
+//  console.log(userValue.charAt(1));
+// } <div class="collab_icon">${firstLetter}</div>
 
+// function displayNotesPopup(){
+//   array.forEach(element => {
+//     var popup = ` <div class="note" onclick="noteBox()"></div>`
+//   });
+// }
 
+// function noteBox(){
+//  var notesField = `
+//   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//   <div class="modal-dialog collab_box" role="document">
+//     <div class="modal-content">
+//       <div class="modal-header collab_header">
+//         <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5>
+//       </div>
+//       <div class="modal-body collab_body">
+//           <div class="ownerAcnt">
+//             <span class=" mailAddIcon">
+//               <i class="fas fa-user-plus"></i>
+//               </span>
+//            <span>malavika ajit <br>abcmalavika@gmail.com</span>
+//           </div>
+//           <div class="otherUser">
+//             <span class=" mailAddIcon">
+//               <i class="fas fa-user-plus"></i>
+//               </span>
+            
+//             <div class="dropdown show">
+//               <input id="searchValue" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" oninput="searchUser()" placeholder="Person or email to share with" aria-label="Search">
+//               <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+//                 Dropdown link
+//               </a> -->
+            
+//               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="myUL">
+//                 <a class="dropdown-item" href="#">Action</a>
+//                 <a class="dropdown-item" href="#">Another action</a>
+//                 <a class="dropdown-item" href="#">Something else here</a>
+//               </div>
+//             </div>
+//           </div>
+//       </div>
+//       <div class="modal-footer collab_footer">
+//         <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick=" addNotes(); addCollabIcon(); ">Save</button>
+//         <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
+//       </div>
+//     </div>
+//   </div>
+// </div>
 
-/************************************************************************/
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
-function mySearch() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("searchValue");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName("li");
-  dropdown = document.getElementById("myDropdown");
-  if (input.value.trim() != '') {
-    dropdown.classList.add('show');
-  } else {
-    dropdown.classList.remove('show');
-  }
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
-
-
-
-
+//   `
+// }
 
 
 

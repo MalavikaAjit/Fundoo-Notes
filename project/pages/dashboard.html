@@ -159,13 +159,9 @@
               <p id="placeholder-text"></p>
           </div>
 
-          <!---modal-->
-          <!-- Button trigger modal -->
-
-
-<!-- Modal -->
+          <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog collab_box" role="document">
     <div class="modal-content">
       <div class="modal-header collab_header">
         <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5>
@@ -175,57 +171,37 @@
             <span class=" mailAddIcon">
               <i class="fas fa-user-plus"></i>
               </span>
-           <span>malavika ajit</span>
+           <span>malavika ajit <br>abcmalavika@gmail.com</span>
           </div>
           <div class="otherUser">
             <span class=" mailAddIcon">
               <i class="fas fa-user-plus"></i>
               </span>
-            <input id="searchValue" class="otherUserInput  mr-sm-2  dropbtn" type="search" onkeyup="mySearch()" oninput="searchUser()" placeholder="Person or email to share with" aria-label="Search">
-            <div id="myDropdown" class="dropdown-content">
-              <ul id="myUL">
-                <li><a href="#">Adele</a></li>
-                <li><a href="#">Agnes</a></li>
-        
-                <li><a href="#">Billy</a></li>
-                <li><a href="#">Bob</a></li>
-        
-                <li><a href="#">Calvin</a></li>
-                <li><a href="#">Christina</a></li>
-                <li><a href="#">Cindy</a></li>
-              </ul>
+            
+            <div class="dropdown show">
+              <input id="searchValue" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" oninput="searchUser()" placeholder="Person or email to share with" aria-label="Search">
+              <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown link
+              </a> -->
+            
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="myUL">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
             </div>
           </div>
       </div>
       <div class="modal-footer collab_footer">
-        <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary btn_save">Save</button>
+        <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick=" addNotes()">Save</button>
+        <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
       </div>
     </div>
   </div>
 </div>
           
-    </section>
-    <!-- <section class="mainSection">
-      <br>
-      <div class="dropdown">
-        <center><input type="text" id="myInput" class="dropbtn" onkeyup="mySearch()" placeholder="Search..." title="Type Series Title"></center>
-        <div id="myDropdown" class="dropdown-content">
-          <ul id="myUL">
-            <li><a href="#">Adele</a></li>
-            <li><a href="#">Agnes</a></li>
+    </section>    
     
-            <li><a href="#">Billy</a></li>
-            <li><a href="#">Bob</a></li>
-    
-            <li><a href="#">Calvin</a></li>
-            <li><a href="#">Christina</a></li>
-            <li><a href="#">Cindy</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-     -->
     <script type="text/javascript" src="../javascript/jquery/jquery/jquery-3.4.1.min.js"></script>
     <script src="../javascript/bootstrap/popper.min.js"></script>
     <script src="../javascript/bootstrap/bootstrap.min.js"></script>

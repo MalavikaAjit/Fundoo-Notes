@@ -179,12 +179,14 @@ function addNotesreq(url, meth, data, page) {  ////req for add notes
 const addNotes = () => {
   const description = document.getElementById('note-text').value;
   const title = document.getElementById('note-title').value;
+  const userValue = document.getElementById('searchValue').value;
   
   //validatenotes() check([description])
   if(description !== '' && title !== ''){
     let data = {                         //title &description
       "title": title,
-      "description": description
+      "description": description,
+      "collaborators": userValue
     }
     // notesreq('notes/addNotes','post', data)
     addNotesreq('notes/addNotes','post', data,"addNote")
@@ -260,7 +262,7 @@ function deleteNotereq(url, meth,data) {
 }
 
 /***collaborators **/
-
+const emailList = document.querySelector("#myUL");
 
 function collabreq(url, meth, data) {  ////req for add notes 
   
@@ -277,7 +279,10 @@ function collabreq(url, meth, data) {  ////req for add notes
       let collabArr = result.data.details;
       let collabresult = collabArr.map(e => e.email)
          console.log('Success:', collabresult);
-
+         emailList.innerHTML = collabArr.map(e =>
+          `<a href = "#"> ${e.email}</a>
+          `).join("");
+      localStorage.setItem("collab", JSON.stringify(collabresult));
     })
     // .then(re => {
     //   console.log( re);
@@ -286,6 +291,12 @@ function collabreq(url, meth, data) {  ////req for add notes
       console.error('Error:', error);
     });
 }
+
+
+$(document).on("click","#myUL a", function(){
+  console.log($(this).text());
+  $("#searchValue").val($(this).text());
+});
 
 
 // const searchUser = () => { 
@@ -303,9 +314,15 @@ function collabreq(url, meth, data) {  ////req for add notes
 
 function searchUser(){
  const userValue = document.getElementById('searchValue').value;
- if(userValue !== ''){
+ if(userValue !== '' && userValue.length > 2){
   let data = {
-    searchWord: userValue
+    "searchWord": userValue,
+    "collaborators": userValue,
+    // collaborators: [{
+    //   "firstName": e.firstName,
+    //   "lastName": e.lastName,
+    //   "email": e.email
+    // }],
   };
   collabreq('/user/searchUserList','post',data);
  }
