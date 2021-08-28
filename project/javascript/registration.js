@@ -52,14 +52,14 @@ const notesField = document.querySelector("#notes");
 
 function displayNotes() {
   const notes = JSON.parse(localStorage.getItem('notes')) || []; 
-  const userValue = document.getElementById('searchValue').value;
-  let firstLetter = userValue.charAt(1);
+  // const userValue = document.getElementById('searchValue').value;
+  // let firstLetter = userValue.charAt(1);
   const hasNotes = notes.length > 0;
   placeholder.style.display = hasNotes ? 'none' : 'flex';
    notesField.innerHTML = notes.map(note => `
-      <div class="note">
+      <div class="note" onclick="openModal()">
         <div class="note-title">${note.title}</div>
-        <div class="note-text">${note.description}</div>
+        <div class="note-text">${note.description}</div>          
         <div class="toolbar-container">
           <div class="toolbar">         
           <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
@@ -77,6 +77,10 @@ function displayNotes() {
 displayNotes();
 
 
+function openModal(){
+  $('#exampleModal2').modal('show')
+}
+
 
 /*****modal for collaborators***/
 
@@ -86,8 +90,29 @@ $('#myModal').on('shown.bs.modal', function () {
 
 /******/
 
-// function addCollabIcon(){
-//   const userValue = document.getElementById('searchValue').value;
+//  function addCollabIcon(){
+//   var content = '';
+//   for(cco){
+//     content += ` <div class="note" onclick="openModal()">
+//     <div class="note-title">${note.title}</div>
+//     <div class="note-text">${note.description}</div>          
+//     <div class="toolbar-container">
+//       <div class="toolbar">         
+//       <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
+     
+//       <i class="material-icons">more_vert</i> 
+//       <i class="material-icons">archive</i>
+//       <i class="material-icons">palette</i> 
+//       <i class="material-icons">person_add_alt</i> 
+//       <i class="material-icons">add_alert</i>       
+//       </div>
+//     </div>
+//   </div>`
+//   if(userValue.length !== ''{
+//     content += collabIcon(firstLetter)
+//   })
+//   }
+// document.getElementById('searchValue').value;
 //   let firstLetter = userValue.charAt(1);
 //  console.log(userValue.charAt(1));
 // } <div class="collab_icon">${firstLetter}</div>

@@ -178,22 +178,66 @@
               <i class="fas fa-user-plus"></i>
               </span>
             
-            <div class="dropdown show">
+            <div class="dropdown droplist show">
               <input id="searchValue" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" oninput="searchUser()" placeholder="Person or email to share with" aria-label="Search">
               <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown link
               </a> -->
             
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="myUL">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" onclick="userDetails(e)" href="#"></a>
+                <a class="dropdown-item" href="#"> </a>
+                <a class="dropdown-item" href="#"> </a>
               </div>
             </div>
           </div>
       </div>
       <div class="modal-footer collab_footer">
         <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick=" addNotes()">Save</button>
+        <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog collab_box" role="document">
+    <div class="modal-content">
+      <div class="modal-header collab_header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5> -->
+      </div>
+      <div class="modal-body collab_body">
+          <div class="ownerAcnt">
+            <span class="">            
+              </span>
+              <input id="" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  placeholder="text" aria-label="Search">
+          </div>
+          <div class="otherUser">
+            <span class=" ">          
+              </span>
+            
+            <div class="dropdown show">
+              <input id="" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  placeholder="title" aria-label="Search">
+              <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown link
+              </a> -->
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer collab_footer_popup">
+        <div class="toolbar_popup">   
+          <i class="material-icons">more_vert</i> 
+          <i class="material-icons">archive</i>
+          <i class="material-icons">palette</i> 
+          <i class="material-icons">person_add_alt</i> 
+          <i class="material-icons">add_alert</i>       
+          </div>
+          <div class="savebtn_popup">
+            <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick=" addNotes()">Save</button>
+          </div>
+       
         <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
       </div>
     </div>

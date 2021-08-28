@@ -125,7 +125,7 @@ body{
 
 
 .sidebar.open {
-    width: 300px;
+    width: 196px;
 }
 
 
@@ -137,15 +137,25 @@ body{
 
 }
 
-.sidebar.open  .home-section {
+/* .sidebar.open  .home-section {
   left: 300px;
   width: calc(100% - 300px);
-}
+} */
 .sidebar.open  li a{
     border-radius: 0 25px 25px 0 !important;
 }
 .sidebar ul li i{
   color: #5f6368;
+}
+.sidebar.open ~ #notes{
+  position: relative;
+  left: 165px !important;
+  width: calc(100% - 165px) !important;
+}
+.sidebar.open ~ #form-container {
+  position: relative;
+  left: 196px;
+  width: calc(100% - 196px);
 }
 
 main {
@@ -180,11 +190,15 @@ main {
   border: 0.5px solid #d3d3d3;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
     0 2px 6px 2px rgba(60, 64, 67, 0.149);
-  margin: 60px auto 16px auto;
+  margin-top: 60px !important;
   max-width: 496px;
   transition-duration: 0.218s;
   transition-property: background, border, opacity, box-shadow, transform;
   transition-timing-function: ease-in;
+  position: relative;
+  left: 97px;
+  width: calc(100% - 97px);
+  margin: 0 auto;
 }
 
 #form {
@@ -223,7 +237,10 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 20px;
+  position: relative;
+  left: 50px;
+  width: calc(100% - 50px);
+  /* margin: 20px; */
 }
 
 #note-text {
@@ -380,6 +397,18 @@ input:focus {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+.toolbar_popup{
+  opacity: 1;
+  flex-direction: row-reverse;
+  justify-content: left;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.54);
+  display: flex;
+  font-size: 12px;
+  line-height: 26px;
+  margin: 4px 0;
+  position: relative;
+}
 
 .toolbar {
   opacity: 0;
@@ -397,6 +426,7 @@ input:focus {
 .toolbar:hover {
   opacity: 1;
 }
+.toolbar_popup i,
 .toolbar i{
   padding: 0px 10px;
   color: #5f6368;
@@ -421,6 +451,16 @@ input:focus {
   color: #212122;
   background-color: #69676729; ;
   border:none;
+}
+.savebtn_popup{
+    transform: translateX(13rem);
+}
+.collab_footer_popup{
+  padding: 2px;
+  background:transparent;
+  display: flex;
+  justify-content: left;
+  border-top: none;
 }
 .collab_footer{
   padding: 4px;
@@ -476,6 +516,16 @@ input:focus {
 .collab_box{
   padding-top: 21%; 
  padding-bottom: 21%;
+}
+.dropdown-menu a{
+  color: #212122;
+  margin:15px
+}
+.droplist .dropdown-menu.show{
+ 
+    height: 100px;
+    
+    overflow-y: scroll;
 }
 
 

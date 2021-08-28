@@ -181,12 +181,17 @@ const addNotes = () => {
   const title = document.getElementById('note-title').value;
   const userValue = document.getElementById('searchValue').value;
   
+  let obj ={"firstName": '',
+      "lastName": '',
+      "email": userValue
+  }
   //validatenotes() check([description])
+  console.log(JSON.stringify([obj]))
   if(description !== '' && title !== ''){
     let data = {                         //title &description
       "title": title,
       "description": description,
-      "collaborators": userValue
+      "collaberators":[obj]
     }
     // notesreq('notes/addNotes','post', data)
     addNotesreq('notes/addNotes','post', data,"addNote")
@@ -276,13 +281,13 @@ function collabreq(url, meth, data) {  ////req for add notes
   })
     .then(response => response.json()) //resolve promises
     .then(result => {
-      let collabArr = result.data.details;
+       collabArr = result.data.details;
       let collabresult = collabArr.map(e => e.email)
          console.log('Success:', collabresult);
          emailList.innerHTML = collabArr.map(e =>
           `<a href = "#"> ${e.email}</a>
           `).join("");
-      localStorage.setItem("collab", JSON.stringify(collabresult));
+      // localStorage.setItem("collab", JSON.stringify(collabresult));
     })
     // .then(re => {
     //   console.log( re);
@@ -292,12 +297,16 @@ function collabreq(url, meth, data) {  ////req for add notes
     });
 }
 
+// function userDetails(){
+//   console.log($(this).text());
+//   $("#searchValue").val($(this).text());
+// }
 
 $(document).on("click","#myUL a", function(){
   console.log($(this).text());
   $("#searchValue").val($(this).text());
 });
-
+let searchResult = collabresult
 
 // const searchUser = () => { 
 //   //validatenotes() check([description])
@@ -317,7 +326,7 @@ function searchUser(){
  if(userValue !== '' && userValue.length > 2){
   let data = {
     "searchWord": userValue,
-    "collaborators": userValue,
+    "collaborators": JSON.stringify([userValue])
     // collaborators: [{
     //   "firstName": e.firstName,
     //   "lastName": e.lastName,
