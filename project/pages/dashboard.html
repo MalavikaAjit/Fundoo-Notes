@@ -98,7 +98,7 @@
         </li>
         <li>
           <a href="#">
-            <i class="material-icons" onclick="getArchnote()">archive</i>
+            <i class="material-icons" onclick="getArchnote(); removeTextBox();">archive</i>
             <span class="links_name">Archive</span>
           </a>
         </li>
@@ -184,7 +184,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog collab_box" role="document">
         <div class="modal-content">
@@ -222,11 +222,11 @@
           <div class="modal-footer collab_footer">
             <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal"
               onclick=" addNotes()">Save</button>
-            <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
+            <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button>
           </div>
         </div>
       </div>
-    </div>
+    </div> 
 
 
 
@@ -234,9 +234,9 @@
       aria-hidden="true">
       <div class="modal-dialog collab_box" role="document">
         <div class="modal-content">
-          <div class="modal-header collab_header">
-            <!-- <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5> -->
-          </div>
+          <!-- <div class="modal-header collab_header">
+            <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5>
+          </div> -->
           <div class="modal-body collab_body">
             <div class="ownerAcnt">
               <span class="">

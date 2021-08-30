@@ -61,8 +61,8 @@ function displayNotes() {
   placeholder.style.display = hasNotes ? 'none' : 'flex';
    notesField.innerHTML = notes.map(note => `
    
-      <div class="note"  style="background: ${note.color};">
-        <div class="note-title">${note.title}</div>
+      <div class="note" style="background: ${note.color};">
+        <div class="note-title" onclick="openModal()">${note.title}</div>
         <div class="note-text">${note.description}</div>          
         <div class="toolbar-container">
           <div class="toolbar">         
@@ -95,7 +95,7 @@ function displayArchiveNotes() {
   const hasNotes = notes.length > 0;
   placeholder.style.display = hasNotes ? 'none' : 'flex';
    notesField.innerHTML = notes.map(note => `
-      <div class="note" onclick="openModal()">
+      <div class="note">
         <div class="note-title">${note.title}</div>
         <div class="note-text">${note.description}</div>          
         <div class="toolbar-container">
@@ -115,7 +115,7 @@ function displayArchiveNotes() {
 }
 
 
-// var backgrnd = document.getElementById('form').value;
+
 
 function colourChange(colorCode){
   // alert(colorCode);
@@ -127,10 +127,71 @@ function colourChange(colorCode){
   // document.querySelectorAll('input').style.backgroundColor = colorCode ;
 
 }
-// function openModal(){
-//   $('#exampleModal2').modal('show')
-// }
+function openModal(){
+  $('#exampleModal2').modal('show')
+  openPopUp();
+}
 
+function removeTextBox(){
+  $('#form-container').hide();
+}
+
+
+
+
+
+// const popUp = document.querySelector(".otherUserInput");
+//  function openPopUp(){
+//   const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
+// popUp.innerHTML = notes.map(i =>`
+// <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+//       aria-hidden="true">
+//       <div class="modal-dialog collab_box" role="document">
+//         <div class="modal-content">
+//           <div class="modal-header collab_header">           
+//           </div>
+//           <div class="modal-body collab_body">
+//             <div class="ownerAcnt">
+//               <span class="">
+//               </span>
+//               <input id="${this.title}" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
+//                 aria-haspopup="true" aria-expanded="false" placeholder="text" aria-label="Search">
+//             </div>
+//             <div class="otherUser">
+//               <span class=" ">
+//               </span>
+
+//               <div class="dropdown show">
+//                 <input id="${this.description}" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
+//                   aria-haspopup="true" aria-expanded="false" placeholder="title" aria-label="Search">
+//                 <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+//                 Dropdown link
+//               </a> -->
+//               </div>
+//             </div>
+//           </div>
+//           <div class="modal-footer collab_footer_popup">
+//             <div class="toolbar_popup">
+//               <i class="material-icons">more_vert</i>
+//               <i class="material-icons">archive</i>
+//               <i class="material-icons">palette</i>
+            
+//               <i class="material-icons">person_add_alt</i>
+//               <i class="material-icons">add_alert</i>
+//             </div>
+//             <div class="savebtn_popup">
+//               <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal"
+//                 onclick=" addNotes()">Save</button>
+//             </div>
+
+//             <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+// `
+//   );
+// }
 
 
 /*****modal for collaborators***/
