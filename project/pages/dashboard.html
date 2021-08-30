@@ -1,260 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>dashboard</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/fontawesome/css/all.min.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="../css/dashboard.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>dashboard</title>  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/fontawesome/css/all.min.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="../css/dashboard.css">
+  
 
-   
-    
+
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light header_nav fixed-top">
-            <a class="navbar-brand icon_flex" href="#">
-                <span  class="nav-icons bx-menu" id="btn">
-                    <span>
-                        <i class="fas fa-bars"></i>
-                    </span>
-                </span>
-                <img src="../assets/dashboard-page/keep_img.png" width="40px" height="40px" alt="">
-                <h2 class="ml-3 mb-0">Fundoo</h2>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-             
-              <form class="form-inline my-2 my-lg-0 mr-auto">
-                    <input class="form-control mr-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
-              </form>
-              <ul class="navbar-nav ">
-                <li class="nav-item nav-icons mr-2">
-                    <span title="Refresh">
-                        <i class="fas fa-redo"></i>
-                    </span>
-                </li>
-                <li class="nav-item nav-icons mr-2">
-                    <span>
-                      <i class="fas fa-grip-lines"></i>
-                    </span>
-                </li>
-                <li class="nav-item nav-icons mr-2">
-                    <span>
-                        <i class="fas fa-cog"></i>
-                    </span>
-                </li>
-                <li class="nav-item nav-icons mr-2">
-                    <span>
-                      <i class="fas fa-th"></i>
-                    </span>
-                </li>
-                <li class="nav-item nav-icons mr-2">
-                    <span>
-                      <i class="fas fa-user"></i>
-                        <!-- <img src="../assets/dashboard-page/keep_img.png" width="42px" height="42px" alt="" style="border-radius: 50%;"> -->
-                    </span>
-                </li>
-              </ul>
-            </div>
-          </nav>
-    </header>
- 
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light header_nav fixed-top">
+      <a class="navbar-brand icon_flex" href="#">
+        <span class="nav-icons bx-menu" id="btn">
+          <span>
+            <i class="fas fa-bars"></i>
+          </span>
+        </span>
+        <img src="../assets/dashboard-page/keep_img.png" width="40px" height="40px" alt="">
+        <h2 class="ml-3 mb-0">Fundoo</h2>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <section>
-        <div class="sidebar">
-          <ul class="nav-list">
-            <li>
-              <a href="#">
-                <i class = "material-icons">lightbulb</i>
-                <span class="links_name">Notes</span>
-              </a>
-            </li>
-            <li>
-             <a href="#">
-              <i class = "material-icons">notifications</i>
-               <span class="links_name">Reminder</span>
-             </a>
-           </li>
-           <li>
-             <a href="#">
-              <i class = "material-icons">edit</i>
-               <span class="links_name">Edit notes</span>
-             </a>
-           </li>
-           <li>
-             <a href="#">
-              <i class = "material-icons">archive</i>
-               <span class="links_name">Archive</span>
-             </a>
-           </li>
-           <li>
-             <a href="#">
-              <i class = "material-icons">delete</i>
-               <span class="links_name">Trash</span>
-             </a>
-           </li>
-          </ul>
-          </div>
-               <div id="form-container">
-                   <div id="form" autocomplete="off">
-                      <input id="note-title" placeholder="Title" type="text">
-                      <input id="note-text" onclick="openNotes()" placeholder="Take a note..." type="text">
-                      <div id="form-buttons">
-                        <div class="row">
-                          <div class="col-md-8 ">
-                            <div class="note-icons">
-                              <span>
-                                <i class="material-icons">
-                                  add_alert
-                                </i>
-                               </span>
-                               <span>
-                                
-                                <i class="material-icons" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                  person_add_alt
-                                </i>
-                               </span>
-                               <span>
-                                <i class="material-icons">
-                                  palette
-                                </i>                                  
-                               </span>
-                               <span>
-                                <i class="material-icons">
-                                  image
-                                </i>                                  
-                               </span>
-                               <span>
-                                <i class="material-icons">
-                                  archive
-                                </i>
-                               </span>
-                               <span>
-                                <i class="material-icons">
-                                  more_vert
-                                </i>
-                               </span>
-                            </div>
-                          </div>
-                          <div class="col-md-4 text-right">
-                            <button type="submit" onclick="addNotes(); closeNotes();" id="form-close-button">Close</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-               </div>
-               <div id="notes"></div>
-          <div id="placeholder">
-              <img id="placeholder-logo">
-              <p id="placeholder-text"></p>
-          </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-          <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog collab_box" role="document">
-    <div class="modal-content">
-      <div class="modal-header collab_header">
-        <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5>
+        <form class="form-inline my-2 my-lg-0 mr-auto">
+          <input class="form-control mr-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
+        </form>
+        <ul class="navbar-nav ">
+          <li class="nav-item nav-icons mr-2">
+            <span title="Refresh">
+              <i class="fas fa-redo"></i>
+            </span>
+          </li>
+          <li class="nav-item nav-icons mr-2">
+            <span>
+              <i class="fas fa-grip-lines"></i>
+            </span>
+          </li>
+          <li class="nav-item nav-icons mr-2">
+            <span>
+              <i class="fas fa-cog"></i>
+            </span>
+          </li>
+          <li class="nav-item nav-icons mr-2">
+            <span>
+              <i class="fas fa-th"></i>
+            </span>
+          </li>
+          <li class="nav-item nav-icons mr-2">
+            <span>
+              <i class="fas fa-user"></i>
+              <!-- <img src="../assets/dashboard-page/keep_img.png" width="42px" height="42px" alt="" style="border-radius: 50%;"> -->
+            </span>
+          </li>
+        </ul>
       </div>
-      <div class="modal-body collab_body">
-          <div class="ownerAcnt">
-            <span class=" mailAddIcon">
-              <i class="fas fa-user-plus"></i>
-              </span>
-           <span>malavika ajit <br>abcmalavika@gmail.com</span>
+    </nav>
+  </header>
+
+
+  <section>
+    <div class="sidebar">
+      <ul class="nav-list">
+        <li>
+          <a href="#">
+            <i class="material-icons">lightbulb</i>
+            <span class="links_name">Notes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons">notifications</i>
+            <span class="links_name">Reminder</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons">edit</i>
+            <span class="links_name">Edit notes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons" onclick="getArchnote()">archive</i>
+            <span class="links_name">Archive</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons">delete</i>
+            <span class="links_name">Trash</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="form-container">
+      <div id="form" autocomplete="off">
+        <input id="note-title" placeholder="Title" type="text">
+        <input id="note-text" onclick="openNotes()" placeholder="Take a note..." type="text">
+        <div id="form-buttons">
+          <div class="row">
+            <div class="col-md-8 ">
+              <div class="note-icons">
+                <span>
+                  <i class="material-icons">
+                    add_alert
+                  </i>
+                </span>
+                <span>
+
+                  <i class="material-icons" type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#exampleModal">
+                    person_add_alt
+                  </i>
+                </span>
+                <span>
+                  
+                  <i class="material-icons  dropdown "  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    palette
+
+                    <div class="dropdown-menu color-tooltip " aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#f28b82" style="background-color:#f28b82;"></a>
+                        <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#fbbc04" style="background-color:#fbbc04;"></a>
+                        <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#a7ffeb" style="background-color:#a7ffeb;" ></a>
+                    </div>
+                  </i>
+               
+                    <!-- <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </div> -->
+                </span>
+                <span>
+                  <i class="material-icons">
+                    image
+                  </i>
+                </span>
+                <span>
+                  <i class="material-icons" onclick="archive(true); closeNotes();">
+                    archive
+                  </i>
+                </span>
+                <span>
+                  <i class="material-icons">
+                    more_vert
+                  </i>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-4 text-right">
+              <button type="submit" onclick="addNotes(); closeNotes();" id="form-close-button">Close</button>
+            </div>
           </div>
-          <div class="otherUser">
-            <span class=" mailAddIcon">
-              <i class="fas fa-user-plus"></i>
+        </div>
+      </div>
+    </div>
+    <div id="notes"></div>
+    <div id="placeholder">
+      <img id="placeholder-logo">
+      <p id="placeholder-text"></p>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog collab_box" role="document">
+        <div class="modal-content">
+          <div class="modal-header collab_header">
+            <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5>
+          </div>
+          <div class="modal-body collab_body">
+            <div class="ownerAcnt">
+              <span class=" mailAddIcon">
+                <i class="fas fa-user-plus"></i>
               </span>
-            
-            <div class="dropdown droplist show">
-              <input id="searchValue" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" oninput="searchUser()" placeholder="Person or email to share with" aria-label="Search">
-              <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span>malavika ajit <br>abcmalavika@gmail.com</span>
+            </div>
+            <div class="otherUser">
+              <span class=" mailAddIcon">
+                <i class="fas fa-user-plus"></i>
+              </span>
+
+              <div class="dropdown droplist show">
+                <input id="searchValue" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="search"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" oninput="searchUser()"
+                  placeholder="Person or email to share with" aria-label="Search">
+                <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown link
               </a> -->
-            
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="myUL">
-                <a class="dropdown-item" onclick="userDetails(e)" href="#"></a>
-                <a class="dropdown-item" href="#"> </a>
-                <a class="dropdown-item" href="#"> </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="myUL">
+                  <a class="dropdown-item" onclick="userDetails(e)" href="#"></a>
+                  <a class="dropdown-item" href="#"> </a>
+                  <a class="dropdown-item" href="#"> </a>
+                </div>
               </div>
             </div>
           </div>
-      </div>
-      <div class="modal-footer collab_footer">
-        <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick=" addNotes()">Save</button>
-        <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
+          <div class="modal-footer collab_footer">
+            <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal"
+              onclick=" addNotes()">Save</button>
+            <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
 
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog collab_box" role="document">
-    <div class="modal-content">
-      <div class="modal-header collab_header">
-        <!-- <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5> -->
-      </div>
-      <div class="modal-body collab_body">
-          <div class="ownerAcnt">
-            <span class="">            
-              </span>
-              <input id="" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  placeholder="text" aria-label="Search">
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog collab_box" role="document">
+        <div class="modal-content">
+          <div class="modal-header collab_header">
+            <!-- <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5> -->
           </div>
-          <div class="otherUser">
-            <span class=" ">          
+          <div class="modal-body collab_body">
+            <div class="ownerAcnt">
+              <span class="">
               </span>
-            
-            <div class="dropdown show">
-              <input id="" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  placeholder="title" aria-label="Search">
-              <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <input id="" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" placeholder="text" aria-label="Search">
+            </div>
+            <div class="otherUser">
+              <span class=" ">
+              </span>
+
+              <div class="dropdown show">
+                <input id="" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false" placeholder="title" aria-label="Search">
+                <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown link
               </a> -->
+              </div>
             </div>
           </div>
-      </div>
-      <div class="modal-footer collab_footer_popup">
-        <div class="toolbar_popup">   
-          <i class="material-icons">more_vert</i> 
-          <i class="material-icons">archive</i>
-          <i class="material-icons">palette</i> 
-          <i class="material-icons">person_add_alt</i> 
-          <i class="material-icons">add_alert</i>       
+          <div class="modal-footer collab_footer_popup">
+            <div class="toolbar_popup">
+              <i class="material-icons">more_vert</i>
+              <i class="material-icons">archive</i>
+              <i class="material-icons">palette</i>
+            
+              <i class="material-icons">person_add_alt</i>
+              <i class="material-icons">add_alert</i>
+            </div>
+            <div class="savebtn_popup">
+              <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal"
+                onclick=" addNotes()">Save</button>
+            </div>
+
+            <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
           </div>
-          <div class="savebtn_popup">
-            <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick=" addNotes()">Save</button>
-          </div>
-       
-        <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
+        </div>
       </div>
     </div>
-  </div>
-</div>
-          
-    </section>    
-    
-    <script type="text/javascript" src="../javascript/jquery/jquery/jquery-3.4.1.min.js"></script>
-    <script src="../javascript/bootstrap/popper.min.js"></script>
-    <script src="../javascript/bootstrap/bootstrap.min.js"></script>
-    <script src="../javascript/registration.js"></script>
-    <!-- <script src="../javascript/registration.js"></script> -->
 
-    <script type="text/javascript" src="../javascript/valid.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+  </section>
+  
+  <script type="text/javascript" src="../javascript/jquery/jquery/jquery-3.4.1.min.js"></script>
+  <script src="../javascript/bootstrap/popper.min.js"></script>
+  <script src="../javascript/bootstrap/bootstrap.min.js"></script>
+  <script src="../javascript/registration.js"></script>
+  <!-- <script src="../javascript/registration.js"></script> -->
+
+  <script type="text/javascript" src="../javascript/valid.js"></script>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
 
 </body>
+
 </html>

@@ -431,6 +431,7 @@ input:focus {
   padding: 0px 10px;
   color: #5f6368;
   font-size: 18px !important;
+  cursor: pointer;
 }
 .btn_save{
   color: #212122;
@@ -529,6 +530,43 @@ input:focus {
 }
 
 
+
+/***colour***/
+.color-option {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid #dedede;
+  padding: 12px 12px;
+}
+
+.color-tooltip {
+  border-bottom: 2px solid #fff;
+  position: absolute;
+  top: -40;
+  background: #fff;
+  border: 1px solid black;
+  left: 0;
+  z-index: 20;
+  border-radius: 5px;
+  display: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 7px 7px 3px;
+  width: 136px;
+  height: 40px;
+  justify-content: space-between;
+  
+}
+
+.color-tooltip.show {
+  display: flex;
+  top: -65px !important;
+}
+
+.color-tooltip a {
+  color: #212122;
+  margin: 0px;
+}
 
 
 

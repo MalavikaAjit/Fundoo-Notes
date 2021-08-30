@@ -44,6 +44,9 @@ function closeNotes(){
   document.querySelector("#form-buttons").style.display = "none";
   document.getElementById('note-text').value='';
   document.getElementById('note-title').value='';
+  document.getElementById('note-text').style.background='none';
+  document.getElementById('note-title').style.background='none';
+  document.getElementById('form-container').style.background='none';
 }
 
 
@@ -51,7 +54,42 @@ const placeholder = document.querySelector("#placeholder");
 const notesField = document.querySelector("#notes");
 
 function displayNotes() {
-  const notes = JSON.parse(localStorage.getItem('notes')) || []; 
+  const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
+  // const userValue = document.getElementById('searchValue').value;
+  // let firstLetter = userValue.charAt(1);
+  const hasNotes = notes.length > 0;
+  placeholder.style.display = hasNotes ? 'none' : 'flex';
+   notesField.innerHTML = notes.map(note => `
+   
+      <div class="note"  style="background: ${note.color};">
+        <div class="note-title">${note.title}</div>
+        <div class="note-text">${note.description}</div>          
+        <div class="toolbar-container">
+          <div class="toolbar">         
+          <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
+         
+          <i class="material-icons">more_vert</i> 
+          <i class="material-icons" id="${note.id}" onclick="archiveNote(id)">archive</i>
+          <i class="material-icons  dropdown "  id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+          palette
+          <div class="dropdown-menu color-tooltip " aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#f28b82')" id="${note.id}" style="background-color:#f28b82;"></a>
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#fbbc04')" id="${note.id}"  style="background-color:#fbbc04;"></a>
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#a7ffeb')" id="${note.id}"  style="background-color:#a7ffeb;" ></a>
+          </div>
+          </i> 
+          <i class="material-icons">person_add_alt</i> 
+          <i class="material-icons">add_alert</i>       
+          </div>
+        </div>
+      </div>
+   `).join("");
+}
+displayNotes();
+
+
+function displayArchiveNotes() {
+  const notes = JSON.parse(localStorage.getItem('archiveNotes')) || []; 
   // const userValue = document.getElementById('searchValue').value;
   // let firstLetter = userValue.charAt(1);
   const hasNotes = notes.length > 0;
@@ -65,8 +103,9 @@ function displayNotes() {
           <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
          
           <i class="material-icons">more_vert</i> 
-          <i class="material-icons">archive</i>
+          <i class="material-icons" id="${note.id}" onclick="archiveNote(id)">archive</i>
           <i class="material-icons">palette</i> 
+            
           <i class="material-icons">person_add_alt</i> 
           <i class="material-icons">add_alert</i>       
           </div>
@@ -74,12 +113,24 @@ function displayNotes() {
       </div>
    `).join("");
 }
-displayNotes();
 
 
-function openModal(){
-  $('#exampleModal2').modal('show')
+// var backgrnd = document.getElementById('form').value;
+
+function colourChange(colorCode){
+  // alert(colorCode);
+  // $('backgrnd').css('background-color', colorCode);
+  
+  document.getElementById('form-container').style.backgroundColor = colorCode ;
+  document.getElementById('note-title').style.backgroundColor = colorCode ; 
+  document.getElementById('note-text').style.backgroundColor = colorCode ;
+  // document.querySelectorAll('input').style.backgroundColor = colorCode ;
+
 }
+// function openModal(){
+//   $('#exampleModal2').modal('show')
+// }
+
 
 
 /*****modal for collaborators***/
@@ -87,6 +138,9 @@ function openModal(){
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
+
+
+
 
 /******/
 
@@ -167,6 +221,8 @@ $('#myModal').on('shown.bs.modal', function () {
 
 //   `
 // }
+
+
 
 
 

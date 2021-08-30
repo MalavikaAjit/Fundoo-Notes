@@ -174,13 +174,19 @@ function addNotesreq(url, meth, data, page) {  ////req for add notes
     });
 }
 
+function rgb2hex(orig){
+  var rgb = orig.replace(/\s/g,'').match(/^rgba?\((\d+),(\d+),(\d+)/i);
+  return (rgb && rgb.length === 4) ? "#" +
+   ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+   ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+   ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : orig;
+ }
 
-
-const addNotes = () => {
+const addNotes = (isArchive=false) => {
   const description = document.getElementById('note-text').value;
   const title = document.getElementById('note-title').value;
   const userValue = document.getElementById('searchValue').value;
-  
+ const color =  rgb2hex(document.getElementById('note-text').style.backgroundColor);
   let obj ={"firstName": '',
       "lastName": '',
       "email": userValue
@@ -191,15 +197,21 @@ const addNotes = () => {
     let data = {                         //title &description
       "title": title,
       "description": description,
-      "collaberators":[obj]
-    }
+      "collaberators":[obj],
+      "isArchived":isArchive,
+      "color": color
+      
+      }
     // notesreq('notes/addNotes','post', data)
     addNotesreq('notes/addNotes','post', data,"addNote")
     }else{
     closeNotes();
   }
 }
-
+function archive(isArchive)
+{
+  addNotes(isArchive);
+}
 
 const getnote =()=>{
   getNotereq('/notes/getNotesList', 'get')
@@ -282,10 +294,10 @@ function collabreq(url, meth, data) {  ////req for add notes
     .then(response => response.json()) //resolve promises
     .then(result => {
        collabArr = result.data.details;
-      let collabresult = collabArr.map(e => e.email)
-         console.log('Success:', collabresult);
+      // let collabresult = collabArr.map(e => e.email)
+      //    console.log('Success:', collabresult);
          emailList.innerHTML = collabArr.map(e =>
-          `<a href = "#"> ${e.email}</a>
+          `<a href = "#" onclick="addCollab(e)"> ${e.email}</a>
           `).join("");
       // localStorage.setItem("collab", JSON.stringify(collabresult));
     })
@@ -297,16 +309,18 @@ function collabreq(url, meth, data) {  ////req for add notes
     });
 }
 
-// function userDetails(){
+function addCollab(e){
+  let email = document.getElementById('searchValue').value;
+  console.log(email);
+  // console.log($(this).text());
+  // $("#searchValue").val($(collabArr).text());
+}
+
+// $(document).on("click","#myUL a", function(){
 //   console.log($(this).text());
 //   $("#searchValue").val($(this).text());
-// }
+// });
 
-$(document).on("click","#myUL a", function(){
-  console.log($(this).text());
-  $("#searchValue").val($(this).text());
-});
-let searchResult = collabresult
 
 // const searchUser = () => { 
 //   //validatenotes() check([description])
@@ -339,9 +353,99 @@ function searchUser(){
 }
 
 
+/*****archive */
+function archiveNote(id){
+  let data = {
+    noteIdList: [id],
+    isArchived: true
+    
+}
+archiveNotereq('/notes/archiveNotes' , 'post', data)
+}
+
+function archiveNotereq(url, meth,data) {  
+  
+  fetch(baseUrl + url, {
+    method: meth,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response =>  
+    {
+      getnote();
+        return console.log('notes archived');
+        
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
 
 
+const getArchnote =()=>{
+  getArchiveNotereq('/notes/getArchiveNotesList', 'get')
+}
+
+
+function getArchiveNotereq(url, meth) {     //req for get note 
+  fetch(baseUrl + url, {
+    method: meth,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    // body: JSON.stringify(data)
+  })
+    .then(response => response.json()) //resolve promises
+    .then(result => {  
+      let dataObj = result.data.data; 
+      let archNote = dataObj.filter(
+        (i) => (i.isArchived ) === true
+      );         
+        localStorage.setItem("archiveNotes", JSON.stringify(archNote));
+        displayArchiveNotes();
+        // window.location.href = 'dashboard.html';
+      return console.log('Success:', result.data.data);
+
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+function colourChangeNote(id , colorId){
+  let data = {
+    noteIdList: [id],
+    color:colorId
+  }
+  changeColourReq('/notes/changesColorNotes','post',data)
+}
+
+function changeColourReq(url, meth,data) {  
+  
+  fetch(baseUrl + url, {
+    method: meth,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response =>  
+    {
+      getnote();
+        return console.log('colour changed');
+        
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
 
 
