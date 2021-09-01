@@ -279,7 +279,7 @@ function deleteNotereq(url, meth,data) {
 }
 
 /***collaborators **/
-const emailList = document.querySelector("#myUL");
+// const emailList = document.querySelector("#myUL");
 
 function collabreq(url, meth, data) {  ////req for add notes 
   
@@ -294,11 +294,20 @@ function collabreq(url, meth, data) {  ////req for add notes
     .then(response => response.json()) //resolve promises
     .then(result => {
        collabArr = result.data.details;
+       for (let details of collabArr) {
+        // if (collabArr.length !== '') {
+            innerHtml += `
+            <a href = "#"> ${details.email}</a>`
+        document.querySelector("#myUL").innerHTML = innerHtml
+        }
+    
       // let collabresult = collabArr.map(e => e.email)
       //    console.log('Success:', collabresult);
-         emailList.innerHTML = collabArr.map(e =>
-          `<a href = "#" onclick="addCollab(e)"> ${e.email}</a>
-          `).join("");
+        //  emailList.innerHTML = collabArr.map(details =>
+        //   innerHTML += 
+        //   `<a href = "#"> ${details.email}</a>
+        //   `).join("");
+        //   document.querySelector('#searchValue').innerHTML = innerHtml
       // localStorage.setItem("collab", JSON.stringify(collabresult));
     })
     // .then(re => {
@@ -334,9 +343,9 @@ function addCollab(e){
 //     closeNotes();
 //   }
 // }
-
-function searchUser(){
- const userValue = document.getElementById('searchValue').value;
+const userValue = document.getElementById('searchValue').value;
+function searchUser(userValue){
+ 
  if(userValue !== '' && userValue.length > 2){
   let data = {
     "searchWord": userValue,
@@ -417,6 +426,7 @@ function getArchiveNotereq(url, meth) {     //req for get note
     });
 }
 
+/****color**/
 
 function colourChangeNote(id , colorId){
   let data = {
@@ -447,6 +457,40 @@ function changeColourReq(url, meth,data) {
     });
 }
 
+/*******update notes */
+
+const updateNotes = (id) => {
+  const title = document.querySelector('#updatedTitle ').value;
+  const discripption = document.querySelector('#updatedDescription ').value;
+  const updateid = id;
+  let data = {
+
+      "noteId": updateid,
+      "title": title,
+      "description": discripption,
+  }
+  updatereq('/notes/updateNotes','post',data)
+ }
+
+function updatereq(url, meth,data) {  
+  
+  fetch(baseUrl + url, {
+    method: meth,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response =>  
+    {
+      getnote();
+        
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
 
 

@@ -307,7 +307,7 @@ input:focus {
   padding-left: 17px;
     padding-top: 10px;
 }
-.note-icons span{
+.note-icons .icons_span{
   padding: 0px 10px;
   color: #5f6368;
   font-size: 18px !important;
@@ -315,10 +315,10 @@ input:focus {
 .note-icons .material-icons{
   font-size: 18px !important;
 }
-.note-icons span:first-child{
+.note-icons .icons_span:first-child{
   padding :0px !important;
 }
-.note-icons span:last-child{
+.note-icons .icons_span:last-child{
   padding :0px !important;
 }
 
@@ -364,6 +364,7 @@ input:focus {
   overflow: hidden;
   position: relative;
   border-radius: 8px;
+  height: 125px;
   
   
 }
@@ -552,23 +553,94 @@ input:focus {
   display: none;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 7px 7px 3px;
-  width: 136px;
-  height: 40px;
+  width: 125px !important;
+  /* height: 40px; */
   justify-content: space-between;
+  min-width: inherit;
   
 }
 
 .color-tooltip.show {
-  display: flex;
-  top: -65px !important;
+  /* display: flex; */
+  top: -112px !important;
 }
 
 .color-tooltip a {
   color: #212122;
   margin: 0px;
 }
+.color_drop{
+  padding: 5px;
+  float: left;
+}
+.archTop{
+  margin-top: 45px;
+}
+.modal-backdrop.show {
+  opacity: 0.5 !important;
+}
 
 
+
+
+/******************************************/
+
+
+/* Modal Content */
+/* .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #ffffff;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #ffffff;
+  color: white;
+}
+ */
 
 
 

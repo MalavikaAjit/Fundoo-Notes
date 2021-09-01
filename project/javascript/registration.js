@@ -55,14 +55,13 @@ const notesField = document.querySelector("#notes");
 
 function displayNotes() {
   const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
-  // const userValue = document.getElementById('searchValue').value;
-  // let firstLetter = userValue.charAt(1);
   const hasNotes = notes.length > 0;
   placeholder.style.display = hasNotes ? 'none' : 'flex';
-   notesField.innerHTML = notes.map(note => `
+   notesField.innerHTML = notes.map(note =>`
    
       <div class="note" style="background: ${note.color};">
-        <div class="note-title" onclick="openModal()">${note.title}</div>
+      
+        <div class="note-title"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" onclick=" openPopUp('${note.title}','${note.description}','${note.id}','${note.color}')">${note.title}</div>
         <div class="note-text">${note.description}</div>          
         <div class="toolbar-container">
           <div class="toolbar">         
@@ -72,10 +71,30 @@ function displayNotes() {
           <i class="material-icons" id="${note.id}" onclick="archiveNote(id)">archive</i>
           <i class="material-icons  dropdown "  id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
           palette
-          <div class="dropdown-menu color-tooltip " aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#f28b82')" id="${note.id}" style="background-color:#f28b82;"></a>
-                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#fbbc04')" id="${note.id}"  style="background-color:#fbbc04;"></a>
-                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#a7ffeb')" id="${note.id}"  style="background-color:#a7ffeb;" ></a>
+          <div class="dropdown-menu color-tooltip" aria-labelledby="dropdownMenuButton">
+          <span class="color_drop">
+                      <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ffffff')"id="${note.id}" style="background-color:#ffffff;"></a>
+
+                     </span>
+                     <span  class="color_drop">
+                      <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#a7ffeb')" id="${note.id}" style="background-color:#a7ffeb;" ></a>
+
+                     </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#d7aefb')" id="${note.id}"style="background-color:#d7aefb;"></a>
+
+                       </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ccff90')" id="${note.id}" style="background-color: #ccff90;"></a>
+                       </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#fbbc04')" id="${note.id}" style="background-color:#fbbc04;" ></a>
+
+                       </span>
+                         <span  class="color_drop">
+                          <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#f28b82')" id="${note.id}" style="background-color:#f28b82;"></a>
+                         </span>
+                       
           </div>
           </i> 
           <i class="material-icons">person_add_alt</i> 
@@ -95,22 +114,24 @@ function displayArchiveNotes() {
   const hasNotes = notes.length > 0;
   placeholder.style.display = hasNotes ? 'none' : 'flex';
    notesField.innerHTML = notes.map(note => `
-      <div class="note">
-        <div class="note-title">${note.title}</div>
-        <div class="note-text">${note.description}</div>          
-        <div class="toolbar-container">
-          <div class="toolbar">         
-          <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
+     
+     <div class="note style="background: ${note.color}; ">
+     <div class="note-title">${note.title}</div>
+     <div class="note-text">${note.description}</div>          
+     <div class="toolbar-container">
+       <div class="toolbar">         
+       <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
+      
+       <i class="material-icons">more_vert</i> 
+       <i class="material-icons" id="${note.id}" onclick="archiveNote(id)">archive</i>
+       <i class="material-icons">palette</i> 
          
-          <i class="material-icons">more_vert</i> 
-          <i class="material-icons" id="${note.id}" onclick="archiveNote(id)">archive</i>
-          <i class="material-icons">palette</i> 
-            
-          <i class="material-icons">person_add_alt</i> 
-          <i class="material-icons">add_alert</i>       
-          </div>
-        </div>
-      </div>
+       <i class="material-icons">person_add_alt</i> 
+       <i class="material-icons">add_alert</i>       
+       </div>
+     </div>
+   </div>
+     
    `).join("");
 }
 
@@ -127,71 +148,99 @@ function colourChange(colorCode){
   // document.querySelectorAll('input').style.backgroundColor = colorCode ;
 
 }
-function openModal(){
-  $('#exampleModal2').modal('show')
-  openPopUp();
-}
+
+// var modal = document.getElementById("myModal");
+
+
+// var span = document.getElementsByClassName("close")[0];
+
+
+// // btn.onclick = 
+// function popUp() {
+//   modal.style.display = "block";
+//   content();
+// }
+
+
+// span.onclick = function() {
+//   modal.style.display = "none";
+  
+// }
+
+
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// }
+
 
 function removeTextBox(){
   $('#form-container').hide();
 }
 
 
-
-
-
-// const popUp = document.querySelector(".otherUserInput");
-//  function openPopUp(){
-//   const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
-// popUp.innerHTML = notes.map(i =>`
-// <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-//       aria-hidden="true">
-//       <div class="modal-dialog collab_box" role="document">
-//         <div class="modal-content">
-//           <div class="modal-header collab_header">           
-//           </div>
-//           <div class="modal-body collab_body">
-//             <div class="ownerAcnt">
-//               <span class="">
-//               </span>
-//               <input id="${this.title}" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
-//                 aria-haspopup="true" aria-expanded="false" placeholder="text" aria-label="Search">
-//             </div>
-//             <div class="otherUser">
-//               <span class=" ">
-//               </span>
-
-//               <div class="dropdown show">
-//                 <input id="${this.description}" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
-//                   aria-haspopup="true" aria-expanded="false" placeholder="title" aria-label="Search">
-//                 <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-//                 Dropdown link
-//               </a> -->
-//               </div>
-//             </div>
-//           </div>
-//           <div class="modal-footer collab_footer_popup">
-//             <div class="toolbar_popup">
-//               <i class="material-icons">more_vert</i>
-//               <i class="material-icons">archive</i>
-//               <i class="material-icons">palette</i>
-            
-//               <i class="material-icons">person_add_alt</i>
-//               <i class="material-icons">add_alert</i>
-//             </div>
-//             <div class="savebtn_popup">
-//               <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal"
-//                 onclick=" addNotes()">Save</button>
-//             </div>
-
-//             <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-// `
-//   );
+// function openModal(){
+//   $('#exampleModal2').modal('toggle')
+//   openPopUp(tittle,discription);
 // }
+
+
+const popUp = document.getElementById('dailog');
+ function openPopUp(title,description,id,color){
+//   const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
+// popUp.innerHTML = notes.map(i => 
+
+     popUp.innerHTML = "";
+    // var script = document.createElement("script");
+    if (title != null){
+    popUp.innerHTML = 
+  `
+<div class="modal fade " id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true" >
+      <div class="modal-dialog collab_box" role="document">
+        <div class="modal-content" style="background: ${color};">
+          <div class="modal-header collab_header">           
+          </div>
+          <div class="modal-body collab_body">
+            <div class="ownerAcnt">
+              <span class="">
+              </span>
+              <input id="updatedTitle" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" value='${title}' placeholder="text" aria-label="Search" style="background: ${color};">
+            </div>
+            <div class="otherUser"> 
+              <span class=" ">
+              </span>
+
+              <div class="dropdown show">
+                <input id="updatedDescription" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false" value='${description}' placeholder="title" aria-label="Search" style="background: ${color};">            
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer collab_footer_popup">
+            <div class="toolbar_popup">
+              <i class="material-icons">more_vert</i>
+              <i class="material-icons">archive</i>
+              <i class="material-icons">palette</i>
+            
+              <i class="material-icons">person_add_alt</i>
+              <i class="material-icons">add_alert</i>
+            </div>
+            <div class="savebtn_popup">
+              <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick="updateNotes('${id}')">Save</button>
+            </div>
+
+            <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+`
+    }
+    // document.querySelector('#dailog').innerHTML = innerHtml   onclick=" addNotes()"
+}
 
 
 /*****modal for collaborators***/
@@ -199,10 +248,120 @@ function removeTextBox(){
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
+// function content(){
 
+// `
+//   <div id="myModal" class="modal">
 
+//   <!-- Modal content -->
+//   <div class="modal-content">
+//     <div class="modal-header">
+//       <span class="close">&times;</span>
+//       <h2>Modal Header</h2>
+//     </div>
+//     <div class="modal-body">
+//       <div class="note-title value">${i.title}</div>
+//      <div class="note-text value">${i.description}</div> 
+//     </div>
+//     <div class="modal-footer">
+//       <div class="toolbar-container">
+//         <div class="toolbar">         
+//         <i class="fas fa-trash" id="${i.id}" onclick="deleteNote(id)"></i>  
+       
+//         <i class="material-icons">more_vert</i> 
+//         <i class="material-icons" id="${i.id}" onclick="archiveNote(id)">archive</i>
+//         <i class="material-icons  dropdown "  id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+//         palette
+//         <div class="dropdown-menu color-tooltip" aria-labelledby="dropdownMenuButton">
+//         <span class="color_drop">
+//                     <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ffffff')"id="${i.id}" style="background-color:#ffffff;"></a>
 
+//                    </span>
+//                    <span  class="color_drop">
+//                     <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#a7ffeb')" id="${i.id}" style="background-color:#a7ffeb;" ></a>
 
+//                    </span>
+//                      <span  class="color_drop">
+//                       <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#d7aefb')" id="${i.id}"style="background-color:#d7aefb;"></a>
+
+//                      </span>
+//                      <span  class="color_drop">
+//                       <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ccff90')" id="${i.id}" style="background-color: #ccff90;"></a>
+//                      </span>
+//                      <span  class="color_drop">
+//                       <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#fbbc04')" id="${i.id}" style="background-color:#fbbc04;" ></a>
+
+//                      </span>
+//                        <span  class="color_drop">
+//                         <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#f28b82')" id="${i.id}" style="background-color:#f28b82;"></a>
+//                        </span>
+                     
+//         </div>
+//         </i> 
+//         <i class="material-icons">person_add_alt</i> 
+//         <i class="material-icons">add_alert</i>       
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+
+// </div>
+//   `
+// }
+
+// function openPopUp() {
+//   const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
+  
+//   const hasNotes = notes.length > 0;
+//   placeholder.style.display = hasNotes ? 'none' : 'flex';
+//    notesField.innerHTML = notes.map(note => `
+   
+//       <div class="note" id="exampleModal2" style="background: ${note.color};">
+//         <div class="note-title" id="myBtn">${note.title}</div>
+//         <div class="note-text">${note.description}</div>          
+//         <div class="toolbar-container">
+//           <div class="toolbar">         
+//           <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
+         
+//           <i class="material-icons">more_vert</i> 
+//           <i class="material-icons" id="${note.id}" onclick="archiveNote(id)">archive</i>
+//           <i class="material-icons  dropdown "  id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+//           palette
+//           <div class="dropdown-menu color-tooltip" aria-labelledby="dropdownMenuButton">
+//           <span class="color_drop">
+//                       <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ffffff')"id="${note.id}" style="background-color:#ffffff;"></a>
+
+//                      </span>
+//                      <span  class="color_drop">
+//                       <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#a7ffeb')" id="${note.id}" style="background-color:#a7ffeb;" ></a>
+
+//                      </span>
+//                        <span  class="color_drop">
+//                         <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#d7aefb')" id="${note.id}"style="background-color:#d7aefb;"></a>
+
+//                        </span>
+//                        <span  class="color_drop">
+//                         <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ccff90')" id="${note.id}" style="background-color: #ccff90;"></a>
+//                        </span>
+//                        <span  class="color_drop">
+//                         <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#fbbc04')" id="${note.id}" style="background-color:#fbbc04;" ></a>
+
+//                        </span>
+//                          <span  class="color_drop">
+//                           <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#f28b82')" id="${note.id}" style="background-color:#f28b82;"></a>
+//                          </span>
+                       
+//           </div>
+//           </i> 
+//           <i class="material-icons">person_add_alt</i> 
+//           <i class="material-icons"  type="button" id="closeBtn">add_alert</i>  
+
+//           </div>
+//         </div>
+//       </div>
+//    `).join("");
+// }
+// displayNotes();
 /******/
 
 //  function addCollabIcon(){
@@ -282,7 +441,6 @@ $('#myModal').on('shown.bs.modal', function () {
 
 //   `
 // }
-
 
 
 

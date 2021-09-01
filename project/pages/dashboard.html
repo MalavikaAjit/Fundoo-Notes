@@ -118,52 +118,60 @@
           <div class="row">
             <div class="col-md-8 ">
               <div class="note-icons">
-                <span>
+                <span class="icons_span">
                   <i class="material-icons">
                     add_alert
                   </i>
-                </span>
-                <span>
+                </span >
+                <span class="icons_span">
 
                   <i class="material-icons" type="button" class="btn btn-primary" data-toggle="modal"
                     data-target="#exampleModal">
                     person_add_alt
                   </i>
                 </span>
-                <span>
+                <span class="icons_span">
                   
                   <i class="material-icons  dropdown "  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     palette
 
                     <div class="dropdown-menu color-tooltip " aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#f28b82" style="background-color:#f28b82;"></a>
-                        <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#fbbc04" style="background-color:#fbbc04;"></a>
-                        <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#a7ffeb" style="background-color:#a7ffeb;" ></a>
+                     <span class="color_drop">
+                      <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#ffffff" style="background-color:#ffffff;"></a>
+
+                     </span>
+                     <span  class="color_drop">
+                      <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#a7ffeb" style="background-color:#a7ffeb;" ></a>
+
+                     </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#d7aefb" style="background-color:#d7aefb;"></a>
+
+                       </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#ccff90" style="background-color: #ccff90;"></a>
+                       </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#fbbc04" style="background-color:#fbbc04;" ></a>
+
+                       </span>
+                         <span  class="color_drop">
+                          <a class="dropdown-item color-option" href="#" onclick="colourChange(this.id)" id="#f28b82" style="background-color:#f28b82;"></a>
+                         </span>
                     </div>
-                  </i>
-               
-                    <!-- <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown button
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </div> -->
+                  </i>   
                 </span>
-                <span>
+                <span class="icons_span">
                   <i class="material-icons">
                     image
                   </i>
                 </span>
-                <span>
+                <span class="icons_span">
                   <i class="material-icons" onclick="archive(true); closeNotes();">
                     archive
                   </i>
                 </span>
-                <span>
+                <span class="icons_span">
                   <i class="material-icons">
                     more_vert
                   </i>
@@ -177,13 +185,13 @@
         </div>
       </div>
     </div>
-    <div id="notes"></div>
+    <div id="notes" class="archTop"></div>
     <div id="placeholder">
       <img id="placeholder-logo">
       <p id="placeholder-text"></p>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal popup for collaborators -->
      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog collab_box" role="document">
@@ -205,14 +213,14 @@
 
               <div class="dropdown droplist show">
                 <input id="searchValue" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="search"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" oninput="searchUser()"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" oninput="searchUser(event.target.value)"
                   placeholder="Person or email to share with" aria-label="Search">
                 <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown link
               </a> -->
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="myUL">
-                  <a class="dropdown-item" onclick="userDetails(e)" href="#"></a>
+                  <a class="dropdown-item"  href="#"></a>
                   <a class="dropdown-item" href="#"> </a>
                   <a class="dropdown-item" href="#"> </a>
                 </div>
@@ -227,55 +235,68 @@
         </div>
       </div>
     </div> 
+    <div class="dailog" id="dailog"></div>
 
 
+   <!-- Trigger/Open The Modal -->
+<!-- <button id="myBtn">Open Modal</button> -->
 
-    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog collab_box" role="document">
-        <div class="modal-content">
-          <!-- <div class="modal-header collab_header">
-            <h5 class="modal-title" id="exampleModalLabel"> Collaborators</h5>
-          </div> -->
-          <div class="modal-body collab_body">
-            <div class="ownerAcnt">
-              <span class="">
-              </span>
-              <input id="" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" placeholder="text" aria-label="Search">
-            </div>
-            <div class="otherUser">
-              <span class=" ">
-              </span>
+<!-- The Modal -->
+<!-- <div id="myModal" class="modal"> -->
 
-              <div class="dropdown show">
-                <input id="" class="otherUserInput  mr-sm-2  dropbtn dropdown-toggle" type="text" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false" placeholder="title" aria-label="Search">
-                <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown link
-              </a> -->
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer collab_footer_popup">
-            <div class="toolbar_popup">
-              <i class="material-icons">more_vert</i>
-              <i class="material-icons">archive</i>
-              <i class="material-icons">palette</i>
-            
-              <i class="material-icons">person_add_alt</i>
-              <i class="material-icons">add_alert</i>
-            </div>
-            <div class="savebtn_popup">
-              <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal"
-                onclick=" addNotes()">Save</button>
-            </div>
+  <!-- Modal content -->
+  <!-- <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Modal Header</h2>
+    </div>
+    <div class="modal-body">
+      <div class="note-title">${note.title}</div>
+     <div class="note-text">${note.description}</div> 
+    </div>
+    <div class="modal-footer">
+      <div class="toolbar-container">
+        <div class="toolbar">         
+        <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
+       
+        <i class="material-icons">more_vert</i> 
+        <i class="material-icons" id="${note.id}" onclick="archiveNote(id)">archive</i>
+        <i class="material-icons  dropdown "  id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+        palette
+        <div class="dropdown-menu color-tooltip" aria-labelledby="dropdownMenuButton">
+        <span class="color_drop">
+                    <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ffffff')"id="${note.id}" style="background-color:#ffffff;"></a>
 
-            <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
-          </div>
+                   </span>
+                   <span  class="color_drop">
+                    <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#a7ffeb')" id="${note.id}" style="background-color:#a7ffeb;" ></a>
+
+                   </span>
+                     <span  class="color_drop">
+                      <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#d7aefb')" id="${note.id}"style="background-color:#d7aefb;"></a>
+
+                     </span>
+                     <span  class="color_drop">
+                      <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ccff90')" id="${note.id}" style="background-color: #ccff90;"></a>
+                     </span>
+                     <span  class="color_drop">
+                      <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#fbbc04')" id="${note.id}" style="background-color:#fbbc04;" ></a>
+
+                     </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#f28b82')" id="${note.id}" style="background-color:#f28b82;"></a>
+                       </span>
+                     
+        </div>
+        </i> 
+        <i class="material-icons">person_add_alt</i> 
+        <i class="material-icons">add_alert</i>       
         </div>
       </div>
     </div>
+  </div> -->
+
+<!-- </div> -->
 
   </section>
   
