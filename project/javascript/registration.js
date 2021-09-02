@@ -47,6 +47,7 @@ function closeNotes(){
   document.getElementById('note-text').style.background='none';
   document.getElementById('note-title').style.background='none';
   document.getElementById('form-container').style.background='none';
+  document.getElementById('form-close-button').style.background='none';
 }
 
 
@@ -145,6 +146,7 @@ function colourChange(colorCode){
   document.getElementById('form-container').style.backgroundColor = colorCode ;
   document.getElementById('note-title').style.backgroundColor = colorCode ; 
   document.getElementById('note-text').style.backgroundColor = colorCode ;
+  document.getElementById('form-close-button').style.backgroundColor = colorCode ;
   // document.querySelectorAll('input').style.backgroundColor = colorCode ;
 
 }
