@@ -461,13 +461,13 @@ function changeColourReq(url, meth,data) {
 
 const updateNotes = (id) => {
   const title = document.querySelector('#updatedTitle ').value;
-  const discripption = document.querySelector('#updatedDescription ').value;
+  const desc = document.querySelector('#updatedDescription ').value;
   const updateid = id;
   let data = {
 
       "noteId": updateid,
       "title": title,
-      "description": discripption,
+      "description": desc,
   }
   updatereq('/notes/updateNotes','post',data)
  }

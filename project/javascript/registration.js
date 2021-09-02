@@ -186,7 +186,7 @@ function removeTextBox(){
 // }
 
 
-const popUp = document.getElementById('dailog');
+const popUp = document.getElementById('popUp-div');
  function openPopUp(title,description,id,color){
 //   const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
 // popUp.innerHTML = notes.map(i => 
