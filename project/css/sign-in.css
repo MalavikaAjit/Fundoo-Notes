@@ -14,17 +14,17 @@ body{
     justify-content: center;
     align-items: center;
 }
-.content{
-    padding: 48px 40px 25px;
+.content {
+    padding: 37px 43px 49px;
     border-style: solid;
     border-width: 1.5px;
     border-color: rgb(187, 185, 185);
     border-radius: 10px;
     width: 30rem;
+    height: 100%;
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    
 }
 .form-head{
     display: flex;
@@ -38,8 +38,8 @@ body{
     font-size:24px;
     padding-bottom: 5px;
 }
-.title-main{
-    font-size: 14px;
+.title-main {
+    font-size: 21px;
 }
 .text-field{
     display: flex;
@@ -50,9 +50,9 @@ body{
 .username{
     margin-top: 10px;
 }
-.username input.form-control{
+.username input.form-control {
     padding-right: 186px;
-    padding-bottom: 40px;
+    padding-bottom: 17px;
 }
 .button2{
     background-color: transparent;
@@ -69,8 +69,12 @@ body{
 .right-button{
     padding-left: 30%;
 }
-.password{
-    margin-top: 10%;
+.password {
+    margin-top: 0%;
+}
+.password input.form-control {
+    padding-right: 186px;
+    padding-bottom: 17px;
 }
 .checkbox{
     margin-top: 10%;
@@ -107,4 +111,42 @@ body{
 }
 .form-control{
     margin:6px;
+}
+@media only screen and (max-width: 599px) and (min-width: 300px) {
+
+.form-content {
+    width: 100%;
+    padding-bottom: 279px;
+}
+.content {
+    padding: 37px 43px 49px;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: rgb(187, 185, 185);
+    border-radius: 10px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.first-container {
+    /* margin-top: 20px; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.username input.form-control {
+    padding-right: 256px;
+    padding-bottom: 17px;
+}
+.password input.form-control {
+    padding-right: 256px;
+    padding-bottom: 17px;
+}
+.right-button {
+    text-align: right!important;
+}
 }
