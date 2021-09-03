@@ -99,9 +99,10 @@ function resetPwd(data) {
 
 }
 function signin(data) {
+  if(data.email !== ''){
 
   servicereq('user/login', 'post', data, 'login');
-  
+  }
 
 }
 function registration(data) {           //notes(data)

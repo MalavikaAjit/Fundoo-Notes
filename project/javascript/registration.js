@@ -224,8 +224,37 @@ const popUp = document.getElementById('popUp-div');
           <div class="modal-footer collab_footer_popup">
             <div class="toolbar_popup">
               <i class="material-icons">more_vert</i>
-              <i class="material-icons">archive</i>
-              <i class="material-icons">palette</i>
+              <i class="material-icons" id="${id}" onclick="archiveNote(id)">archive</i>
+              <i class="material-icons  dropdown "  id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+              palette
+
+              <div class="dropdown-menu color-tooltip" aria-labelledby="dropdownMenuButton">
+          <span class="color_drop">
+                      <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ffffff')"id="${id}" style="background-color:#ffffff;"></a>
+
+                     </span>
+                     <span  class="color_drop">
+                      <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#a7ffeb')" id="${id}" style="background-color:#a7ffeb;" ></a>
+
+                     </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#d7aefb')" id="${id}"style="background-color:#d7aefb;"></a>
+
+                       </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#ccff90')" id="${id}" style="background-color: #ccff90;"></a>
+                       </span>
+                       <span  class="color_drop">
+                        <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#fbbc04')" id="${id}" style="background-color:#fbbc04;" ></a>
+
+                       </span>
+                         <span  class="color_drop">
+                          <a class="dropdown-item color-option" href="#" onclick="colourChangeNote(this.id,'#f28b82')" id="${id}" style="background-color:#f28b82;"></a>
+                         </span>
+                       
+          </div>
+              
+              </i>
             
               <i class="material-icons">person_add_alt</i>
               <i class="material-icons">add_alert</i>
