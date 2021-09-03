@@ -54,8 +54,9 @@ function closeNotes(){
 const placeholder = document.querySelector("#placeholder");
 const notesField = document.querySelector("#notes");
 
-function displayNotes() {
-  const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
+function displayNotes(newnote) {
+  // const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
+  const notes= newnote;
   const hasNotes = notes.length > 0;
   placeholder.style.display = hasNotes ? 'none' : 'flex';
    notesField.innerHTML = notes.map(note =>`
@@ -63,7 +64,8 @@ function displayNotes() {
       <div class="note" style="background: ${note.color};">
       
         <div class="note-title"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" onclick=" openPopUp('${note.title}','${note.description}','${note.id}','${note.color}')">${note.title}</div>
-        <div class="note-text">${note.description}</div>          
+        <div class="note-text">${note.description}</div>    
+        <div class="addnote-collab" id="addnote-collab-h"></div>      
         <div class="toolbar-container">
           <div class="toolbar">         
           <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
@@ -105,11 +107,12 @@ function displayNotes() {
       </div>
    `).join("");
 }
-displayNotes();
+displayNotes(newnote);
 
 
-function displayArchiveNotes() {
-  const notes = JSON.parse(localStorage.getItem('archiveNotes')) || []; 
+function displayArchiveNotes(displaynote) {
+  // const notes = JSON.parse(localStorage.getItem('archiveNotes')) || []; 
+  const notes  =displaynote;
   // const userValue = document.getElementById('searchValue').value;
   // let firstLetter = userValue.charAt(1);
   const hasNotes = notes.length > 0;
@@ -147,6 +150,7 @@ function colourChange(colorCode){
   document.getElementById('note-title').style.backgroundColor = colorCode ; 
   document.getElementById('note-text').style.backgroundColor = colorCode ;
   document.getElementById('form-close-button').style.backgroundColor = colorCode ;
+  
   // document.querySelectorAll('input').style.backgroundColor = colorCode ;
 
 }
@@ -188,8 +192,9 @@ function removeTextBox(){
 // }
 
 
-const popUp = document.getElementById('popUp-div');
+
  function openPopUp(title,description,id,color){
+  const popUp = document.getElementById('popUp-div');
 //   const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
 // popUp.innerHTML = notes.map(i => 
 
@@ -201,7 +206,7 @@ const popUp = document.getElementById('popUp-div');
 <div class="modal fade " id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true" >
       <div class="modal-dialog collab_box" role="document">
-        <div class="modal-content" style="background: ${color};">
+        <div class="modal-content" style="background: ${color};" id="popUpModal">
           <div class="modal-header collab_header">           
           </div>
           <div class="modal-body collab_body">
@@ -224,7 +229,7 @@ const popUp = document.getElementById('popUp-div');
           <div class="modal-footer collab_footer_popup">
             <div class="toolbar_popup">
               <i class="material-icons">more_vert</i>
-              <i class="material-icons" id="${id}" onclick="archiveNote(id)">archive</i>
+              <i class="material-icons" id="${id}" onclick="archiveNote(id)" data-dismiss="modal" >archive</i>
               <i class="material-icons  dropdown "  id="dropdownMenuButton" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
               palette
 
@@ -263,7 +268,6 @@ const popUp = document.getElementById('popUp-div');
               <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick="updateNotes('${id}')">Save</button>
             </div>
 
-            <!-- <button type="button" class="btn btn-primary btn_save" onclick="addNotes()">Save</button> -->
           </div>
         </div>
       </div>
