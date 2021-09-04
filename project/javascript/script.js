@@ -1,65 +1,58 @@
-
-
 /********password-toggle**/
-$(document).on('change', '.password-toggle', function(e) {
-// const passwordToggle = document.querySelector('.password-toggle')
+$(document).on("change", ".password-toggle", function (e) {
+  // const passwordToggle = document.querySelector('.password-toggle')
 
-// passwordToggle.addEventListener('change', function() {
-  const password = document.querySelector('.showPassword')
-  
-  if (password.type === 'password') {
-    password.type = 'text'
+  // passwordToggle.addEventListener('change', function() {
+  const password = document.querySelector(".showPassword");
+
+  if (password.type === "password") {
+    password.type = "text";
   } else {
-    password.type = 'password'
+    password.type = "password";
   }
-  
-  
-})
-
-
+});
 
 /***toggle sidebar**/
 
-$( document ).ready(function() {
-    let sidebar = document.querySelector(".sidebar");
-    let closeBtn = document.querySelector("#btn");
-    
-    closeBtn.addEventListener("click", ()=>{
-      sidebar.classList.toggle("open");
-    });
-} );
+$(document).ready(function () {
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
 
+  closeBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+  });
+});
 
 /****toggle text field***/
 
-
-function openNotes(){
+function openNotes() {
   // $('#form').addClass('form-open');
-      document.querySelector("#note-title").style.display = "block";
-      document.querySelector("#form-buttons").style.display = "block";
+  document.querySelector("#note-title").style.display = "block";
+  document.querySelector("#form-buttons").style.display = "block";
 }
 
-function closeNotes(){
+function closeNotes() {
   document.querySelector("#note-title").style.display = "none";
   document.querySelector("#form-buttons").style.display = "none";
-  document.getElementById('note-text').value='';
-  document.getElementById('note-title').value='';
-  document.getElementById('note-text').style.background='none';
-  document.getElementById('note-title').style.background='none';
-  document.getElementById('form-container').style.background='none';
-  document.getElementById('form-close-button').style.background='none';
+  document.getElementById("note-text").value = "";
+  document.getElementById("note-title").value = "";
+  document.getElementById("note-text").style.background = "none";
+  document.getElementById("note-title").style.background = "none";
+  document.getElementById("form-container").style.background = "none";
+  document.getElementById("form-close-button").style.background = "none";
 }
-
 
 const placeholder = document.querySelector("#placeholder");
 const notesField = document.querySelector("#notes");
 
 function displayNotes(newnote) {
-  // const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
-  const notes= newnote;
+  // const notes = JSON.parse(localStorage.getItem('notes')).reverse() || [];
+  const notes = newnote;
   const hasNotes = notes.length > 0;
-  placeholder.style.display = hasNotes ? 'none' : 'flex';
-   notesField.innerHTML = notes.map(note =>`
+  placeholder.style.display = hasNotes ? "none" : "flex";
+  notesField.innerHTML = notes
+    .map(
+      (note) => `
    
       <div class="note" style="background: ${note.color};">
       
@@ -105,19 +98,20 @@ function displayNotes(newnote) {
           </div>
         </div>
       </div>
-   `).join("");
+   `
+    )
+    .join("");
 }
 displayNotes(newnote);
 
-
 function displayArchiveNotes(displaynote) {
-  // const notes = JSON.parse(localStorage.getItem('archiveNotes')) || []; 
-  const notes  =displaynote;
-  // const userValue = document.getElementById('searchValue').value;
-  // let firstLetter = userValue.charAt(1);
+  // const notes = JSON.parse(localStorage.getItem('archiveNotes')) || [];
+  const notes = displaynote;
   const hasNotes = notes.length > 0;
-  placeholder.style.display = hasNotes ? 'none' : 'flex';
-   notesField.innerHTML = notes.map(note => `
+  placeholder.style.display = hasNotes ? "none" : "flex";
+  notesField.innerHTML = notes
+    .map(
+      (note) => `
      
      <div class="note style="background: ${note.color}; ">
      <div class="note-title">${note.title}</div>
@@ -136,73 +130,65 @@ function displayArchiveNotes(displaynote) {
      </div>
    </div>
      
-   `).join("");
+   `
+    )
+    .join("");
 }
 
-
-
-
-function colourChange(colorCode){
-  // alert(colorCode);
-  // $('backgrnd').css('background-color', colorCode);
-  
-  document.getElementById('form-container').style.backgroundColor = colorCode ;
-  document.getElementById('note-title').style.backgroundColor = colorCode ; 
-  document.getElementById('note-text').style.backgroundColor = colorCode ;
-  document.getElementById('form-close-button').style.backgroundColor = colorCode ;
-  
-  // document.querySelectorAll('input').style.backgroundColor = colorCode ;
-
+function displayTrashNotes(displaynote) {
+  // const notes = JSON.parse(localStorage.getItem('archiveNotes')) || [];
+  const notes = displaynote;
+  const hasNotes = notes.length > 0;
+  placeholder.style.display = hasNotes ? "none" : "flex";
+  notesField.innerHTML = notes
+    .map(
+      (note) => `
+     
+     <div class="note style="background: ${note.color}; ">
+     <div class="note-title">${note.title}</div>
+     <div class="note-text">${note.description}</div>          
+     <div class="toolbar-container">
+       <div class="toolbar">         
+       <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
+      
+       <i class="material-icons">more_vert</i> 
+       <i class="material-icons" id="${note.id}" onclick="archiveNote(id)">archive</i>
+       <i class="material-icons">palette</i> 
+         
+       <i class="material-icons">person_add_alt</i> 
+       <i class="material-icons">add_alert</i>       
+       </div>
+     </div>
+   </div>
+     
+   `
+    )
+    .join("");
 }
 
-// var modal = document.getElementById("myModal");
-
-
-// var span = document.getElementsByClassName("close")[0];
-
-
-// // btn.onclick = 
-// function popUp() {
-//   modal.style.display = "block";
-//   content();
-// }
-
-
-// span.onclick = function() {
-//   modal.style.display = "none";
-  
-// }
-
-
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// }
-
-
-function removeTextBox(){
-  $('#form-container').hide();
+function colourChange(colorCode) {
+  document.getElementById("form-container").style.backgroundColor = colorCode;
+  document.getElementById("note-title").style.backgroundColor = colorCode;
+  document.getElementById("note-text").style.backgroundColor = colorCode;
+  document.getElementById("form-close-button").style.backgroundColor =
+    colorCode;
 }
 
+function removeTextBox() {
+  $("#form-container").hide();
+}
 
 // function openModal(){
 //   $('#exampleModal2').modal('toggle')
 //   openPopUp(tittle,discription);
 // }
 
+function openPopUp(title, description, id, color) {
+  const popUp = document.getElementById("popUp-div");
 
-
- function openPopUp(title,description,id,color){
-  const popUp = document.getElementById('popUp-div');
-//   const notes = JSON.parse(localStorage.getItem('notes')).reverse() || []; 
-// popUp.innerHTML = notes.map(i => 
-
-     popUp.innerHTML = "";
-    // var script = document.createElement("script");
-    if (title != null){
-    popUp.innerHTML = 
-  `
+  popUp.innerHTML = "";
+  if (title != null) {
+    popUp.innerHTML = `
 <div class="modal fade " id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true" >
       <div class="modal-dialog collab_box" role="document">
@@ -272,19 +258,12 @@ function removeTextBox(){
         </div>
       </div>
     </div>
-`
-    }
-    // document.querySelector('#dailog').innerHTML = innerHtml   onclick=" addNotes()"
+`;
+  }
 }
-
 
 /*****modal for collaborators***/
 
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
-// function content(){
-
-
-
-
+$("#myModal").on("shown.bs.modal", function () {
+  $("#myInput").trigger("focus");
+});

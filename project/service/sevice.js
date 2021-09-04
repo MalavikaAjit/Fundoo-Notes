@@ -1,3 +1,5 @@
+/*******service file for api get and post services******/
+
 
 const baseUrl1 = "http://fundoonotes.incubation.bridgelabz.com/api";
 
@@ -21,7 +23,7 @@ function getService(meth, url, data, headerss) {
 
         })
         .catch((err)=>{
-                 console.log(err)
+        console.log(err)
         })
     })
 }
@@ -52,19 +54,3 @@ function postService(meth, url, data, headerss) {
 }
 
 
-// function servicereq (url,meth,data){
-//   fetch(baseUrl+url, {
-//   method:meth,
-//   data: JSON.stringify(data),
-//   headers: {
-//     'Accept': 'application/json',
-//     'Content-Type': 'application/json;charset=UTF-8'
-//   },
-//   })
-//   .then(result => {
-//      return console.log('Success:', result);
-//   })
-//   .catch(error => {
-//     console.error('Error:', error);
-//   });
-// }
