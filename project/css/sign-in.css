@@ -34,12 +34,13 @@ body{
 .form-content{
     width: 100%;
 }
-.title{
-    font-size:24px;
-    padding-bottom: 5px;
+.title {
+    font-size: 24px;
+    padding-top: 11px;
 }
 .title-main {
-    font-size: 21px;
+    font-size: 17px;
+    font-weight: 600;
 }
 .text-field{
     display: flex;

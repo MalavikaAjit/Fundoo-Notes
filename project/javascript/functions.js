@@ -161,18 +161,21 @@ const addNotes = (isArchive = false) => {
   const title = document.getElementById('note-title').value;
   const userValue = document.getElementById('searchValue').value;
   const color = rgb2hex(document.getElementById('note-text').style.backgroundColor);
-  let obj = {
-    "firstName": '',
-    "lastName": '',
-    "email": userValue
-  }
+  // let obj = {
+  //   "firstName": '',
+  //   "lastName": '',
+  //   "email": userValue
+  // }
 
-  console.log(JSON.stringify([obj]))
+  // console.log(JSON.stringify([obj]))
   if (description !== '' && title !== '') {
+    let collabbb = [];
+    collabbb = [details];
+    // console.log("valueee",JSON.stringify(detailsArr))
     let data = {
       "title": title,
       "description": description,
-      // "collaberators": userValue,
+      "collaberators":collabbb,
       "isArchived": isArchive,
       // "color": color
 
@@ -291,13 +294,44 @@ const getArchnote = () => {
     })
 }
 
+function unArchiveNote(id) {
+  let data = {
+    noteIdList: [id],
+    isArchived: false
+
+  }
+  postService('post', '/notes/archiveNotes', data)
+    .then((res) => {
+      console.log(res)
+      getnote();
+
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+// const getUnArchnote = () => {
+//   getService('get','/notes/getArchiveNotesList', {}, headerss)
+//     .then((res) => {
+//       console.log(res)
+//       let dataObj = res.data.data;
+//       let newNote = dataObj.filter(
+//         (i) => (i.isArchived) === true
+//       );
+//       // localStorage.setItem("notes", JSON.stringify(newNote));
+//       displayArchiveNotes(newNote);
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//     })
+// }
 
 /****color**/
 
 function colourChangeNote(id, colorId) {
-  document.getElementById('popUpModal').style.backgroundColor = colorId;
-  document.getElementById('updatedTitle').style.backgroundColor = colorId;
-  document.getElementById('updatedDescription').style.backgroundColor = colorId;
+  // document.getElementById('popUpModal').style.backgroundColor = colorId;
+  // document.getElementById('updatedTitle').style.backgroundColor = colorId;
+  // document.getElementById('updatedDescription').style.backgroundColor = colorId;
   let data = {
     noteIdList: [id],
     color: colorId
@@ -341,7 +375,8 @@ const updateNotes = (id) => {
 
 /***collaborators **/
 // const emailList = document.querySelector("#myUL");
-
+var details ;
+var detailsArr=[];
 var collabArr, displayColabList = [];
 function collabreq(url, meth, data) {  ////req for add notes 
   let innerHtml = "";
@@ -379,24 +414,30 @@ function collabreq(url, meth, data) {  ////req for add notes
     });
 }
 function addToCollabaratorList(i) {
+  $("#searchValue").val('');
   // collabList.push(searchResults[i])
+  details = {};
+  detailsArr=[];
+   details=collabArr[i];
+  detailsArr.push(collabArr[i]);
+  
+  console.log("str",detailsArr);
+  // console.log("details" ,JSON.stringify(detailsArr));
+
+  
   let selectedEmail = collabArr[i].email;
-
+  $("#searchValue").val($(this).text());
   // $("#searchValue").find('selectedEmail').text();
-  displayColabList.push(selectedEmail[0]);
-  console.log(displayColabList)
+  // displayColabList.push(selectedEmail[0]);
+  // console.log(displayColabList)
 }
 
+// function addCollaborator(){
+
+// }
 
 
-function displayCollabListInMain() {
-  var colab = document.getElementById("addnote-collab-h");
-  let val = "";
-  for (let i = 0; i < displayColabList.length; i++) {
-    val += displayColabList[i] + '  ';
-  }
-  colab.innerHTML = val;
-}
+
 
 
 

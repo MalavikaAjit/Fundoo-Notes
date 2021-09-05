@@ -121,9 +121,8 @@ function displayArchiveNotes(displaynote) {
        <i class="fas fa-trash" id="${note.id}" onclick="deleteNote(id)"></i>  
       
        <i class="material-icons">more_vert</i> 
-       <i class="material-icons" id="${note.id}" onclick="archiveNote(id)">archive</i>
+       <i class="material-icons"  id="${note.id}" onclick="unArchiveNote(id)">archive</i>
        <i class="material-icons">palette</i> 
-         
        <i class="material-icons">person_add_alt</i> 
        <i class="material-icons">add_alert</i>       
        </div>

@@ -218,16 +218,24 @@ header {
   padding-top: 4px;
   padding-left: 4px;
 }
-
 #notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  position: relative;
+  left: 70px;
+  width: calc(100% - 50px);
+  /* margin: 20px; */
+}
+
+/* #notes {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   position: relative;
   left: 50px;
-  width: calc(100% - 50px);
-  /* margin: 20px; */
-}
+  width: calc(100% - 50px);  
+} */
 
 #note-text {
   width: calc(100% - 10px);
@@ -557,7 +565,7 @@ input:focus {
   opacity: 0.5 !important;
 }
 .navbar-light .navbar-toggler-icon {
-  background-image: url(../assets/dashboard-page/notes_black_24dp.svg);
+  background-image: url(../assets/dashboard-page/person_black_24dp.svg);
 }
 .navbar-toggler-icon {
   background-size: 75% 75%;
@@ -630,8 +638,8 @@ input:focus {
     margin-top: 60px !important;
     max-width: 496px;
     position: relative;
-    left: 31px !important;
-    width: calc(100% - 97px);
+    left: 23px !important;
+    width: calc(100% - 118px);
     margin: 0 auto;
   }
   .sidebar.open ~ #form-container {
