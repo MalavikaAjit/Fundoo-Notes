@@ -218,24 +218,24 @@ header {
   padding-top: 4px;
   padding-left: 4px;
 }
-#notes {
+/* #notes {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   position: relative;
   left: 70px;
-  width: calc(100% - 50px);
+  width: calc(100% - 50px); */
   /* margin: 20px; */
-}
+/* } */
 
-/* #notes {
+#notes {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   position: relative;
   left: 50px;
   width: calc(100% - 50px);  
-} */
+}
 
 #note-text {
   width: calc(100% - 10px);
@@ -574,6 +574,36 @@ input:focus {
   border: none;
 }
 
+/* #addnote-collab-h{
+  border-style: groove;
+  width: 5%;
+  color: black;
+  border-radius: 55px;
+  background-color: #fff;
+  border-color: rgb(255, 255, 255);
+} */
+#display-icon-main,
+.display-collab-letter{
+  background-color: rgb(224 215 215 / 20%);
+  border: 1.5px solid #6c757d;
+  color: #545b62;
+  font-family: 'Roboto';
+  display: flex;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 10px -10px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 10px -10px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 2px -1px rgb(0 0 0 / 60%);
+  -o-box-shadow: 10px -10px  rgba(0,0,0,0.6);
+}
+.display-avatar,
+.display-icon{
+  padding: 0px 13px 0px;
+  
+}
 /******************************************/
 
 @media only screen and (max-width: 1080px) and (min-width: 830px) {

@@ -7,7 +7,7 @@ const password2 = document.getElementById('password2');
 var error = false;
 const baseUrl = "http://fundoonotes.incubation.bridgelabz.com/api/";
 
-
+var colab = "";
 function showError(input, message) {
   const formControl = input.parentElement;
   formControl.className = 'form-outline error';
@@ -161,28 +161,24 @@ const addNotes = (isArchive = false) => {
   const title = document.getElementById('note-title').value;
   const userValue = document.getElementById('searchValue').value;
   const color = rgb2hex(document.getElementById('note-text').style.backgroundColor);
-  // let obj = {
-  //   "firstName": '',
-  //   "lastName": '',
-  //   "email": userValue
-  // }
+  
+  
 
   // console.log(JSON.stringify([obj]))
   if (description !== '' && title !== '') {
-    let collabbb = [];
-    collabbb = [details];
+    // let collabbb = [JSON.stringify(detailsArr)];
     // console.log("valueee",JSON.stringify(detailsArr))
     let data = {
       "title": title,
       "description": description,
-      "collaberators":collabbb,
+      "collaberators":[JSON.stringify(detailsArr)],
       "isArchived": isArchive,
-      // "color": color
+      "color": color
 
     }
-    if (color != '') {
-      data.color = color;
-    }
+    // if (color != '') {
+    //   data.color = color;
+    // }
 
     postService('post', '/notes/addNotes', data)
       .then((res) => {
@@ -259,6 +255,23 @@ const getTrashNote = () => {
       console.log(err)
     })
 }
+/*****to restore deleted notes****/
+function restoreTrashNote(id) {
+  let data = {
+    noteIdList: [id],
+    isDeleted: false
+
+  }
+  postService('post', '/notes/trashNotes', data)
+    .then((res) => {
+      console.log(res)
+      getTrashNote();
+
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
 
 /*****archive */
@@ -293,6 +306,7 @@ const getArchnote = () => {
       console.log(err)
     })
 }
+/*****to restore archived notes****/
 
 function unArchiveNote(id) {
   let data = {
@@ -303,35 +317,21 @@ function unArchiveNote(id) {
   postService('post', '/notes/archiveNotes', data)
     .then((res) => {
       console.log(res)
-      getnote();
+      getArchnote();
 
     })
     .catch((err) => {
       console.log(err)
     })
 }
-// const getUnArchnote = () => {
-//   getService('get','/notes/getArchiveNotesList', {}, headerss)
-//     .then((res) => {
-//       console.log(res)
-//       let dataObj = res.data.data;
-//       let newNote = dataObj.filter(
-//         (i) => (i.isArchived) === true
-//       );
-//       // localStorage.setItem("notes", JSON.stringify(newNote));
-//       displayArchiveNotes(newNote);
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//     })
-// }
+
 
 /****color**/
 
 function colourChangeNote(id, colorId) {
-  // document.getElementById('popUpModal').style.backgroundColor = colorId;
-  // document.getElementById('updatedTitle').style.backgroundColor = colorId;
-  // document.getElementById('updatedDescription').style.backgroundColor = colorId;
+  document.getElementById('popUpModal').style.backgroundColor = colorId;
+  document.getElementById('updatedTitle').style.backgroundColor = colorId;
+  document.getElementById('updatedDescription').style.backgroundColor = colorId;
   let data = {
     noteIdList: [id],
     color: colorId
@@ -377,7 +377,7 @@ const updateNotes = (id) => {
 // const emailList = document.querySelector("#myUL");
 var details ;
 var detailsArr=[];
-var collabArr, displayColabList = [];
+var collabArr, displayCollabArr = [];
 function collabreq(url, meth, data) {  ////req for add notes 
   let innerHtml = "";
   fetch(baseUrl + url, {
@@ -416,9 +416,9 @@ function collabreq(url, meth, data) {  ////req for add notes
 function addToCollabaratorList(i) {
   $("#searchValue").val('');
   // collabList.push(searchResults[i])
-  details = {};
+  // details = {};
   detailsArr=[];
-   details=collabArr[i];
+  //  details=collabArr[i];
   detailsArr.push(collabArr[i]);
   
   console.log("str",detailsArr);
@@ -428,9 +428,34 @@ function addToCollabaratorList(i) {
   let selectedEmail = collabArr[i].email;
   $("#searchValue").val($(this).text());
   // $("#searchValue").find('selectedEmail').text();
-  // displayColabList.push(selectedEmail[0]);
-  // console.log(displayColabList)
+  displayCollabArr.push(selectedEmail[0]);
+  console.log(displayCollabArr)
+  // let colHTML=``;
+  // for(let i=0; i< displayCollabArr.length; i++){
+  //         colHTML+=`<div style="list-style-type:none" class="display-email-section">`+displayCollabArr[i].firstName.charAt(0).toUpperCase()+`</div>`
+  //       }
 }
+
+function displayCollabListInMain(){
+   colab  = document.getElementById("display-icon-main");
+  let val ="";
+  for(let i=0; i< displayCollabArr.length; i++){
+    val += displayCollabArr[i] + '  ';
+  }
+  colab.innerHTML = val ? val:'';
+  
+
+}
+// function displayCollaborator() {
+//   var icon_collab  = document.getElementById("collab-text");
+//   if (displayCollabArr.length > 0) {
+//     let firstLetter = '';
+//     for (let i = 0; i < displayCollabArr.length; i++) {
+//       firstLetter += displayCollabArr[i].firstName.charAt(0).toUpperCase();
+//     }
+//     icon_collab.innerHTML = firstLetter;
+//   }
+// }
 
 // function addCollaborator(){
 
