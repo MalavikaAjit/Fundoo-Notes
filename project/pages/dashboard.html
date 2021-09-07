@@ -105,8 +105,8 @@
     </div>
     <div id="form-container">
       <div id="form" autocomplete="off">
-        <input id="note-title" placeholder="Title" type="text" />
-        <input id="note-text" onclick="openNotes()" placeholder="Take a note..." type="text" />
+        <input id="note-title" placeholder="Title" type="text" autocomplete="off"/>
+        <input id="note-text" onclick="openNotes()" placeholder="Take a note..." type="text" autocomplete="off"/>
         
         <div id="form-buttons">
           <div class="display-avatar" style="display: none;">
@@ -209,7 +209,7 @@
                 <input id="searchValue" class="otherUserInput mr-sm-2 dropbtn dropdown-toggle" type="search"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
                   oninput="searchUser(event.target.value)" placeholder="Person or email to share with"
-                  aria-label="Search" />
+                  aria-label="Search" autocomplete="off" />
                 <!-- <a class="  dropdown-toggle" href="#" role="" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown link
               </a> -->
