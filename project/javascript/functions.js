@@ -359,7 +359,7 @@ const updateNotes = (id) => {
     "noteId": updateid,
     "title": title,
     "description": desc,
-    "collaberators":[JSON.stringify(detailsArr)],
+    // "collaberators":[JSON.stringify(detailsArr)],
   }
   postService('post', '/notes/updateNotes', data)
     .then((res) => {

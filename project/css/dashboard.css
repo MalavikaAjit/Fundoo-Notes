@@ -329,7 +329,7 @@ input:focus {
   font-weight: 500;
   line-height: 1.25rem;
   height: 36px;
-  padding: 8px 24px;
+  padding: 8px 15px;
   border-radius: 4px;
   border-color: transparent !important;
   background-color: rgb(251, 251, 251);
@@ -573,7 +573,12 @@ input:focus {
 .navbar-light .navbar-toggler {
   border: none;
 }
-
+.float-direction-left{
+  float: left;
+}
+.float-direction-right{
+  float: right;
+}
 /* #addnote-collab-h{
   border-style: groove;
   width: 5%;
@@ -651,7 +656,7 @@ input:focus {
     width: calc(100% - 255px);
   }
 }
-@media only screen and (max-width: 584px) and (min-width: 359px) {
+@media only screen and (max-width: 615px) and (min-width: 359px) {
   .sidebar.open ~ #notes {
     display: flex;
     flex-wrap: wrap;
@@ -691,5 +696,11 @@ input:focus {
     padding: 0px 6px;
     color: #5f6368;
     font-size: 0px !important;
+  }
+}
+@media only screen and (max-width: 614px) {
+  .note{
+    margin: 0px 30px 10px 35px;
+    width: 100%;
   }
 }

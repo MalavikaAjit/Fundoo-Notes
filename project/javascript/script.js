@@ -1,4 +1,4 @@
-var notes  ;
+var notes;
 /********password-toggle**/
 $(document).on("change", ".password-toggle", function (e) {
   // const passwordToggle = document.querySelector('.password-toggle')
@@ -37,7 +37,7 @@ function closeNotes() {
   document.querySelector("#form-buttons").style.display = "none";
   document.getElementById("note-text").value = "";
   document.getElementById("note-title").value = "";
-  // document.getElementById("addnote-collab-h").innerHTML = "";
+  /*******************clearing the content**************/
   document.getElementById("note-text").style.background = "none";
   document.getElementById("note-title").style.background = "none";
   document.getElementById("form-container").style.background = "none";
@@ -50,33 +50,34 @@ const notesField = document.querySelector("#notes");
 function displayNotes(newnote) {
 
   var nHTML = '';
- notes = newnote;
-for (let i = 0; i < notes.length; i++) {
+  notes = newnote;
+  console.log("notesssss",notes);
+  for (let i = 0; i < notes.length; i++) {
     if (notes[i].isDeleted == false && notes[i].isArchived == false) {
-        
-        let displayEmail = [];
-        let resCollaberators = [];
-        
-        resCollaberators = notes[i].collaborators;
-        if (resCollaberators !== undefined && resCollaberators.length > 0) {
-            for (let j = 0; j < resCollaberators.length; j++) {
-                displayEmail.push(resCollaberators[j].email)
-            }
+
+      let displayEmail = [];
+      let resCollaberators = [];
+
+      resCollaberators = notes[i].collaborators;
+      if (resCollaberators !== undefined && resCollaberators.length > 0) {
+        for (let j = 0; j < resCollaberators.length; j++) {
+          displayEmail.push(resCollaberators[j].email)
         }
-        let colHTML = ``;
-        for (let j = 0; j < displayEmail.length; j++) {
-            colHTML += `<div style="list-style-type:none" class="display-collab-letter">` + displayEmail[j].charAt(0).toUpperCase() + `</div>`
-        }
-        nHTML += `<div class="note" style="background: ${notes[i].color};">
+      }
+      let colHTML = ``;
+      for (let j = 0; j < displayEmail.length; j++) {
+        colHTML += `<div style="list-style-type:none" class="display-collab-letter">` + displayEmail[j].charAt(0).toUpperCase() + `</div>`
+      }
+      nHTML += `<div class="note" style="background: ${notes[i].color};">
       
         <div class="note-title"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" onclick=" openPopUp('${i}')">${notes[i].title}</div>
         <div class="note-text">${notes[i].description}</div>` +
-            `<div class="display-collab-icon">
+        `<div class="display-collab-icon">
                       <div class="display-icon" >` + colHTML +
-            `</div>
+        `</div>
                     </div>` +
 
-            ` <div class="toolbar-container">
+        ` <div class="toolbar-container">
                  <div class="toolbar">         
                  <i class="fas fa-trash" id="${notes[i].id}" onclick="deleteNote(id)"></i>  
                 
@@ -118,8 +119,8 @@ for (let i = 0; i < notes.length; i++) {
              </div>
           `;
     }
-}
-document.getElementById("notes").innerHTML = nHTML; 
+  }
+  document.getElementById("notes").innerHTML = nHTML;
 }
 displayNotes(newnote);
 
@@ -194,11 +195,11 @@ function removeTextBox() {
   $("#form-container").hide();
 }
 $(".display-avatar").hide();
-function removeAvatar(){
- var searchField = document.getElementById("searchValue").value ;
-if(searchField !== ''){
-  $(".display-avatar").show();
-}
+function removeAvatar() {
+  var searchField = document.getElementById("searchValue").value;
+  if (searchField !== '') {
+    $(".display-avatar").show();
+  }
 }
 
 // function openModal(){
@@ -209,29 +210,29 @@ if(searchField !== ''){
 
 function openPopUp(i) {
   const popUp = document.getElementById("popUp-div");
-  console.log("i",i);
-  console.log("title",notes[i]);
-  console.log("notes",notes[i].title);
-  console.log("notes12",notes[i].description);
-  console.log("notescolor",notes[i].color);
-  console.log("notesid",notes[i].id);
-  console.log("notescollab",notes[i].collaborators);
+  console.log("i", i);
+  console.log("title", notes[i]);
+  console.log("notes", notes[i].title);
+  console.log("notes12", notes[i].description);
+  console.log("notescolor", notes[i].color);
+  console.log("notesid", notes[i].id);
+  console.log("notescollab", notes[i].collaborators);
   // console.log(id);
   let resCollaberators = [];
-  let displayEmail = [];     
-        resCollaberators = notes[i].collaborators;
-        if (resCollaberators !== undefined && resCollaberators.length > 0) {
-            for (let j = 0; j < resCollaberators.length; j++) {
-                displayEmail.push(resCollaberators[j].email)
-            }
-        }
-       console.log("hey hey",displayEmail);
-        let colHTML = ``;
-        for (let j = 0; j < displayEmail.length; j++) {
-            colHTML += `<div style="list-style-type:none" class="display-collab-letter">` + displayEmail[j].charAt(0).toUpperCase() + `</div>`
-        }
+  let displayEmail = [];
+  resCollaberators = notes[i].collaborators;
+  if (resCollaberators !== undefined && resCollaberators.length > 0) {
+    for (let j = 0; j < resCollaberators.length; j++) {
+      displayEmail.push(resCollaberators[j].email)
+    }
+  }
+  console.log("hey hey", displayEmail);
+  let colHTML = ``;
+  for (let j = 0; j < displayEmail.length; j++) {
+    colHTML += `<div style="list-style-type:none" class="display-collab-letter">` + displayEmail[j].charAt(0).toUpperCase() + `</div>`
+  }
   // console.log(color);
-  popUp.innerHTML = "";  
+  popUp.innerHTML = "";
   if (notes[i].title != null) {
     popUp.innerHTML = `
 <div class="modal fade " id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -259,7 +260,7 @@ function openPopUp(i) {
           </div>
           <div class="display-collab-icon">
                       <div class="display-icon" >` + colHTML +
-            `</div>
+      `</div>
             </div>
           <div class="modal-footer collab_footer_popup">
             <div class="toolbar_popup">
@@ -300,7 +301,7 @@ function openPopUp(i) {
               <i class="material-icons">add_alert</i>
             </div>
             <div class="savebtn_popup">
-              <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick="updateNotes('${notes[i].id    }')">Save</button>
+              <button type="button" class="btn btn-secondary btn_cancel" data-dismiss="modal" onclick="updateNotes('${notes[i].id}')">Save</button>
             </div>
 
           </div>
