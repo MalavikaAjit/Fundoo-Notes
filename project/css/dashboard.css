@@ -607,8 +607,9 @@ input:focus {
 .display-avatar,
 .display-icon{
   padding: 0px 13px 0px;
-  
+  display: flex;
 }
+
 /******************************************/
 
 @media only screen and (max-width: 1080px) and (min-width: 830px) {

@@ -375,7 +375,7 @@ const updateNotes = (id) => {
 
 
 
-/***collaborators **/
+/***collaborators  **/
 
 var details ;
 var detailsArr=[];
@@ -417,7 +417,8 @@ function addToCollabaratorList(i) {
   console.log("str",detailsArr);
     
   let selectedEmail = collabArr[i].email;
-  $("#searchValue").val($(this).text());
+  // $("#searchValue").val($(this).text());
+  document.querySelector('#searchValue').value = selectedEmail
   // $("#searchValue").find('selectedEmail').text();
   displayCollabArr.push(selectedEmail[0]);
   console.log(displayCollabArr)
@@ -455,3 +456,120 @@ function searchUser(userValue) {
 }
 
 
+// function updateCollab(url, meth, data) { 
+//   let innerHtml = "";
+//   fetch(baseUrl + url, {
+//     method: meth,
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Authorization': localStorage.getItem('token')
+//     },
+//     body: JSON.stringify(data)
+//   })
+//     .then(response => response.json()) 
+//     .then(result => {
+//      console.log("result",result);
+      
+//     })
+
+//     .catch(error => {
+//       console.error('Error:', error);
+//     });
+// }
+
+function trial(){
+  alert("alert")
+}
+
+
+
+/***collaborators  for display notes **/
+
+
+  const userValueDisplay = document.getElementById('searchValueDisplay').value;
+function searchUserDisplay(userValueDisplay) {
+
+  if (userValueDisplay !== '' && userValueDisplay.length > 2) {
+    let data = {
+      "searchWord": userValueDisplay,
+      "collaborators": JSON.stringify([userValueDisplay])
+    };
+    collabreqDisplay('/user/searchUserList', 'post', data);
+  }
+}
+
+// var details ;
+// var detailsArr=[];
+// var collabArr, displayCollabArr = [];
+function collabreqDisplay(url, meth, data) { 
+  let innerHtml = "";
+  fetch(baseUrl + url, {
+    method: meth,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token')
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json()) 
+    .then(result => {
+      collabArr = result.data.details;
+      for (let i = 0; i < collabArr.length; i++) {
+        // if (collabArr.length !== '') {
+
+        innerHtml += `
+            <a href = "#" id="`+ i + `" onclick='addToCollabaratorListDisplay(id)' > ` + collabArr[i].email + `</a>`
+        document.querySelector("#myULDisplay").innerHTML = innerHtml
+      }
+    })
+
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+function addToCollabaratorListDisplay(i) {
+  $("#searchValueDisplay").val('');
+  // collabList.push(searchResults[i])
+   detailsObj = {};
+  detailsArr=[];
+    detailsObj=collabArr[i];
+  detailsArr.push(collabArr[i]);
+  
+  console.log("str",detailsArr);
+    
+  let selectedEmail = collabArr[i].email;
+  // $("#searchValue").val($(this).text());
+  document.querySelector('#searchValueDisplay').value = selectedEmail
+  // $("#searchValue").find('selectedEmail').text();
+  displayCollabArr.push(selectedEmail[0]);
+  console.log(displayCollabArr)
+
+}
+
+// function displayCollabListInNotes(){
+//    colab  = document.getElementById("display-icon-main");
+//   let val ="";
+//   for(let i=0; i< displayCollabArr.length; i++){
+//     val += displayCollabArr[i] + '  ';
+//   }
+//   colab.innerHTML = val ? val:'';
+  
+
+// }
+
+function displayNotesCollab(i) {
+ 
+  
+  console.log(i);
+  
+      postService('post', "/notes/"+i+"/AddcollaboratorsNotes", detailsObj)
+      .then((res) => {
+        console.log(res)
+        getnote();
+  
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+ 
+}

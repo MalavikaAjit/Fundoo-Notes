@@ -1,4 +1,5 @@
 var notes;
+var collabModalForDisplayNotesHTML;
 /********password-toggle**/
 $(document).on("change", ".password-toggle", function (e) {
   // const passwordToggle = document.querySelector('.password-toggle')
@@ -42,6 +43,10 @@ function closeNotes() {
   document.getElementById("note-title").style.background = "none";
   document.getElementById("form-container").style.background = "none";
   document.getElementById("form-close-button").style.background = "none";
+  document.getElementById('display-icon-main').value = "";
+  document.getElementById("display-avatar").style.background = "none";
+  
+  
 }
 
 const placeholder = document.querySelector("#placeholder");
@@ -111,8 +116,7 @@ function displayNotes(newnote) {
                               
                  </div>
                  </i> 
-                 <i class="material-icons" type="button" class="btn btn-primary" data-toggle="modal"
-                 data-target="#exampleModal">person_add_alt</i>
+                 <i class="material-icons" type="button" class="btn btn-primary" data-toggle="modal"   data-target="#exampleModal3"  onclick="collabPopup('${notes[i].id}')">person_add_alt</i>
                  <i class="material-icons">add_alert</i>       
                  </div>
                </div>
@@ -124,7 +128,59 @@ function displayNotes(newnote) {
 }
 displayNotes(newnote);
 
-// openPopUp('${notes[i].title}','${notes[i].description}','${notes[i].id}','${notes[i].color}','${notes[i]}')"
+
+function collabPopup(i){
+  
+  console.log("hellooo",i);
+document.getElementById("collabDisplayNotes").innerHTML ="";
+ collabModalForDisplayNotesHTML =`
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog collab_box" role="document">
+        <div class="modal-content">
+          <div class="modal-header collab_header">
+            <h5 class="modal-title" id="exampleModalLabel">Collaborators New</h5>
+          </div>
+          <div class="modal-body collab_body">
+            <div class="ownerAcnt">
+              <span class="mailAddIcon">
+                <i class="fas fa-user-plus"></i>
+              </span>
+              <span>malavika ajit <br />abcmalavika@gmail.com</span>
+            </div>
+            <div class="otherUser">
+              <span class="mailAddIcon">
+                <i class="fas fa-user-plus"></i>
+              </span>
+
+              <div class="dropdown droplist show">
+              <input id="searchValueDisplay" class="otherUserInput mr-sm-2 dropbtn dropdown-toggle" type="search"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              oninput="searchUserDisplay(event.target.value)" placeholder="Person or email to share with"
+              aria-label="Search" autocomplete="off" />
+           
+              
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="myULDisplay">
+                  <a class="dropdown-item" href="#"></a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer collab_footer" id="saveButtonForDisplay">
+           
+              <button type="button" class="btn btn-primary btn_save" data-dismiss="modal"
+              onclick="displayNotesCollab('${i}')">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+`
+document.getElementById("collabDisplayNotes").innerHTML = collabModalForDisplayNotesHTML;
+}
 
 
 function displayArchiveNotes(displaynote) {
@@ -242,6 +298,7 @@ function openPopUp(i) {
           <div class="modal-header collab_header">           
           </div>
           <div class="modal-body collab_body">
+          <h1>update popup</h1>
             <div class="ownerAcnt">
               <span class="">
               </span>
