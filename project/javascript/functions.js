@@ -167,8 +167,7 @@ const addNotes = (isArchive = false) => {
 
   // console.log(JSON.stringify([obj]))
   if (description !== '' && title !== '') {
-    // let collabbb = [JSON.stringify(detailsArr)];
-    // console.log("valueee",JSON.stringify(detailsArr))
+    
     let data = {
       "title": title,
       "description": description,
@@ -429,7 +428,7 @@ function displayCollabListInMain(){
    colab  = document.getElementById("display-icon-main");
   let val ="";
   for(let i=0; i< displayCollabArr.length; i++){
-    val += displayCollabArr[i] + '  ';
+    val += displayCollabArr[i].toUpperCase() + '  ';
   }
   colab.innerHTML = val ? val:'';
   

@@ -43,8 +43,9 @@ function closeNotes() {
   document.getElementById("note-title").style.background = "none";
   document.getElementById("form-container").style.background = "none";
   document.getElementById("form-close-button").style.background = "none";
-  document.getElementById('display-icon-main').value = "";
-  document.getElementById("display-avatar").style.background = "none";
+  document.getElementById("display-icon-main").innerHTML = "";
+  document.getElementById("searchValue").value = "";
+  document.getElementById("display-avatar").style.display = "none";
   
   
 }
@@ -71,7 +72,7 @@ function displayNotes(newnote) {
       }
       let colHTML = ``;
       for (let j = 0; j < displayEmail.length; j++) {
-        colHTML += `<div style="list-style-type:none" class="display-collab-letter">` + displayEmail[j].charAt(0).toUpperCase() + `</div>`
+        colHTML += `<div style="list-style-type:none" class="display-collab-letter mr-2">` + displayEmail[j].charAt(0).toUpperCase() + `</div>`
       }
       nHTML += `<div class="note" style="background: ${notes[i].color};">
       
@@ -354,7 +355,7 @@ function openPopUp(i) {
               
               </i>
             
-              <i class="material-icons">person_add_alt</i>
+              <i class="material-icons" type="button" class="btn btn-primary" data-toggle="modal"   data-target="#exampleModal3"  onclick="collabPopup('${notes[i].id}')">person_add_alt</i>
               <i class="material-icons">add_alert</i>
             </div>
             <div class="savebtn_popup">
