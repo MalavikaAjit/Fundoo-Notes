@@ -138,7 +138,7 @@ document.getElementById("collabDisplayNotes").innerHTML ="";
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog collab_box" role="document">
-        <div class="modal-content">
+        <div class=" contentDisplayCollab">
           <div class="modal-header collab_header">
             <h5 class="modal-title" id="exampleModalLabel">Collaborators New</h5>
           </div>
@@ -147,7 +147,7 @@ document.getElementById("collabDisplayNotes").innerHTML ="";
               <span class="mailAddIcon">
                 <i class="fas fa-user-plus"></i>
               </span>
-              <span>malavika ajit <br />abcmalavika@gmail.com</span>
+              <span class="ownerMailId">abcmalavika@gmail.com</span>
             </div>
             <div class="otherUser">
               <span class="mailAddIcon">
@@ -184,8 +184,7 @@ document.getElementById("collabDisplayNotes").innerHTML = collabModalForDisplayN
 }
 
 
-function displayArchiveNotes(displaynote) {
-  // const notes = JSON.parse(localStorage.getItem('archiveNotes')) || [];
+function displayArchiveNotes(displaynote) { 
   const notes = displaynote;
   const hasNotes = notes.length > 0;
   placeholder.style.display = hasNotes ? "none" : "flex";
@@ -193,7 +192,7 @@ function displayArchiveNotes(displaynote) {
     .map(
       (note) => `
      
-     <div class="note" style="background: ${note.color}; ">
+     <div class="note" style="background: ${note.color}; ">   
      <div class="note-title">${note.title}</div>
      <div class="note-text">${note.description}</div>          
      <div class="toolbar-container">
@@ -286,7 +285,7 @@ function openPopUp(i) {
   console.log("hey hey", displayEmail);
   let colHTML = ``;
   for (let j = 0; j < displayEmail.length; j++) {
-    colHTML += `<div style="list-style-type:none" class="display-collab-letter">` + displayEmail[j].charAt(0).toUpperCase() + `</div>`
+    colHTML += `<div style="list-style-type:none" class="display-collab-letter mr-2">` + displayEmail[j].charAt(0).toUpperCase() + `</div>`
   }
   // console.log(color);
   popUp.innerHTML = "";
@@ -295,11 +294,10 @@ function openPopUp(i) {
 <div class="modal fade " id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true" >
       <div class="modal-dialog collab_box" role="document">
-        <div class="modal-content" style="background: ${notes[i].color};" id="popUpModal">
+        <div class=" contentPopup" style="background: ${notes[i].color};" id="popUpModal">
           <div class="modal-header collab_header">           
           </div>
           <div class="modal-body collab_body">
-          <h1>update popup</h1>
             <div class="ownerAcnt">
               <span class="">
               </span>
@@ -317,7 +315,7 @@ function openPopUp(i) {
             </div>
           </div>
           <div class="display-collab-icon">
-                      <div class="display-icon" >` + colHTML +
+                      <div class="display-icon-popup" >` + colHTML +
       `</div>
             </div>
           <div class="modal-footer collab_footer_popup">
@@ -355,7 +353,7 @@ function openPopUp(i) {
               
               </i>
             
-              <i class="material-icons" type="button" class="btn btn-primary" data-toggle="modal"   data-target="#exampleModal3"  onclick="collabPopup('${notes[i].id}')">person_add_alt</i>
+              <i class="material-icons" type="button" class="btn btn-primary" data-toggle="modal"  data-dismiss="modal"  data-target="#exampleModal3"  onclick="collabPopup('${notes[i].id}')">person_add_alt</i>
               <i class="material-icons">add_alert</i>
             </div>
             <div class="savebtn_popup">
