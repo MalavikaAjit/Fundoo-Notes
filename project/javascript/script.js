@@ -2,9 +2,6 @@ var notes;
 var collabModalForDisplayNotesHTML;
 /********password-toggle**/
 $(document).on("change", ".password-toggle", function (e) {
-  // const passwordToggle = document.querySelector('.password-toggle')
-
-  // passwordToggle.addEventListener('change', function() {
   const password = document.querySelector(".showPassword");
 
   if (password.type === "password") {
@@ -28,7 +25,6 @@ $(document).ready(function () {
 /****toggle text field***/
 
 function openNotes() {
-  // $('#form').addClass('form-open');
   document.querySelector("#note-title").style.display = "block";
   document.querySelector("#form-buttons").style.display = "block";
 }
@@ -183,11 +179,6 @@ function collabPopup(i) {
 }
 
 function displayArchiveNotes(displaynote) {
-  // const notes = displaynote;
-  // const hasNotes = notes.length > 0;
-  // placeholder.style.display = hasNotes ? "none" : "flex";
-  // notesField.innerHTML = notes
-  //   .map(
   var nHTML = "";
   const notes = displaynote;
   console.log("notesssssarch", notes);
@@ -241,12 +232,6 @@ function displayArchiveNotes(displaynote) {
 }
 
 function displayTrashNotes(displaynote) {
-  // const notes = JSON.parse(localStorage.getItem('archiveNotes')) || [];
-  // const notes = displaynote;
-  // const hasNotes = notes.length > 0;
-  // placeholder.style.display = hasNotes ? "none" : "flex";
-  // notesField.innerHTML = notes
-  //   .map(
   var nHTML = "";
   const notes = displaynote;
   console.log("notesssssarch", notes);
@@ -312,11 +297,6 @@ function removeAvatar() {
   }
 }
 
-// function openModal(){
-//   $('#exampleModal2').modal('toggle')
-//   openPopUp(tittle,discription);
-// collaborators
-// }
 
 function openPopUp(i) {
   const popUp = document.getElementById("popUp-div");

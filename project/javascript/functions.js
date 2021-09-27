@@ -1,4 +1,4 @@
-// import {registration} from '../service/sevice'
+
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const username = document.getElementById('username');
@@ -23,7 +23,7 @@ function showSuccess(input) {
 }
 function checkRequired(inputArr) {
   inputArr.forEach(input => {
-   
+
     if (input.value.trim() === '') {
       showError(input, `${input.id} required`);
     }
@@ -162,25 +162,21 @@ const addNotes = (isArchive = false) => {
   const title = document.getElementById('note-title').value;
   const userValue = document.getElementById('searchValue').value;
   const color = rgb2hex(document.getElementById('note-text').style.backgroundColor);
-  
-  
+
+
 
   // console.log(JSON.stringify([obj]))
   if (description !== '' && title !== '') {
-    
+
     let data = {
       "title": title,
       "description": description,
-      "collaberators":[JSON.stringify(detailsArr)],
+      "collaberators": [JSON.stringify(detailsArr)],
       "isArchived": isArchive,
       "color": color
 
     }
-    // if (color != '') {
-    //   data.color = color;
-    // }
-
-    postService('post', '/notes/addNotes', data)
+  postService('post', '/notes/addNotes', data)
       .then((res) => {
         console.log(res)
         getnote();
@@ -358,7 +354,7 @@ const updateNotes = (id) => {
     "noteId": updateid,
     "title": title,
     "description": desc,
-    // "collaberators":[JSON.stringify(detailsArr)],
+
   }
   postService('post', '/notes/updateNotes', data)
     .then((res) => {
@@ -376,10 +372,10 @@ const updateNotes = (id) => {
 
 /***collaborators  **/
 
-var details ;
-var detailsArr=[];
+var details;
+var detailsArr = [];
 var collabArr, displayCollabArr = [];
-function collabreq(url, meth, data) { 
+function collabreq(url, meth, data) {
   let innerHtml = "";
   fetch(baseUrl + url, {
     method: meth,
@@ -389,11 +385,11 @@ function collabreq(url, meth, data) {
     },
     body: JSON.stringify(data)
   })
-    .then(response => response.json()) 
+    .then(response => response.json())
     .then(result => {
       collabArr = result.data.details;
       for (let i = 0; i < collabArr.length; i++) {
-        // if (collabArr.length !== '') {
+
 
         innerHtml += `
             <a href = "#" id="`+ i + `" onclick='addToCollabaratorList(id)' > ` + collabArr[i].email + `</a>`
@@ -407,40 +403,26 @@ function collabreq(url, meth, data) {
 }
 function addToCollabaratorList(i) {
   $("#searchValue").val('');
-  // collabList.push(searchResults[i])
-  // details = {};
-  detailsArr=[];
-  //  details=collabArr[i];
+  detailsArr = [];
   detailsArr.push(collabArr[i]);
-  
-  console.log("str",detailsArr);
-    
+  console.log("str", detailsArr);
   let selectedEmail = collabArr[i].email;
-  // $("#searchValue").val($(this).text());
   document.querySelector('#searchValue').value = selectedEmail
-  // $("#searchValue").find('selectedEmail').text();
   displayCollabArr.push(selectedEmail[0]);
   console.log(displayCollabArr)
 
 }
 
-function displayCollabListInMain(){
-   colab  = document.getElementById("display-icon-main");
-  let val ="";
-  for(let i=0; i< displayCollabArr.length; i++){
+function displayCollabListInMain() {
+  colab = document.getElementById("display-icon-main");
+  let val = "";
+  for (let i = 0; i < displayCollabArr.length; i++) {
     val += displayCollabArr[i].toUpperCase() + '  ';
   }
-  colab.innerHTML = val ? val:'';
-  
+  colab.innerHTML = val ? val : '';
+
 
 }
-
-// $(document).on("click","#myUL a", function(){
-//   console.log($(this).text());
-//   console.log(collabArr);
-//   $("#searchValue").val($(this).text());
-// });
-
 
 const userValue = document.getElementById('searchValue').value;
 function searchUser(userValue) {
@@ -455,37 +437,10 @@ function searchUser(userValue) {
 }
 
 
-// function updateCollab(url, meth, data) { 
-//   let innerHtml = "";
-//   fetch(baseUrl + url, {
-//     method: meth,
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': localStorage.getItem('token')
-//     },
-//     body: JSON.stringify(data)
-//   })
-//     .then(response => response.json()) 
-//     .then(result => {
-//      console.log("result",result);
-      
-//     })
-
-//     .catch(error => {
-//       console.error('Error:', error);
-//     });
-// }
-
-function trial(){
-  alert("alert")
-}
-
-
-
 /***collaborators  for display notes **/
 
 
-  const userValueDisplay = document.getElementById('searchValueDisplay').value;
+const userValueDisplay = document.getElementById('searchValueDisplay').value;
 function searchUserDisplay(userValueDisplay) {
 
   if (userValueDisplay !== '' && userValueDisplay.length > 2) {
@@ -497,10 +452,7 @@ function searchUserDisplay(userValueDisplay) {
   }
 }
 
-// var details ;
-// var detailsArr=[];
-// var collabArr, displayCollabArr = [];
-function collabreqDisplay(url, meth, data) { 
+function collabreqDisplay(url, meth, data) {
   let innerHtml = "";
   fetch(baseUrl + url, {
     method: meth,
@@ -510,11 +462,10 @@ function collabreqDisplay(url, meth, data) {
     },
     body: JSON.stringify(data)
   })
-    .then(response => response.json()) 
+    .then(response => response.json())
     .then(result => {
       collabArr = result.data.details;
       for (let i = 0; i < collabArr.length; i++) {
-        // if (collabArr.length !== '') {
 
         innerHtml += `
             <a href = "#" id="`+ i + `" onclick='addToCollabaratorListDisplay(id)' > ` + collabArr[i].email + `</a>`
@@ -528,47 +479,31 @@ function collabreqDisplay(url, meth, data) {
 }
 function addToCollabaratorListDisplay(i) {
   $("#searchValueDisplay").val('');
-  // collabList.push(searchResults[i])
-   detailsObj = {};
-  detailsArr=[];
-    detailsObj=collabArr[i];
+  detailsObj = {};
+  detailsArr = [];
+  detailsObj = collabArr[i];
   detailsArr.push(collabArr[i]);
-  
-  console.log("str",detailsArr);
-    
+  console.log("str", detailsArr);
   let selectedEmail = collabArr[i].email;
-  // $("#searchValue").val($(this).text());
   document.querySelector('#searchValueDisplay').value = selectedEmail
-  // $("#searchValue").find('selectedEmail').text();
   displayCollabArr.push(selectedEmail[0]);
   console.log(displayCollabArr)
 
 }
 
-// function displayCollabListInNotes(){
-//    colab  = document.getElementById("display-icon-main");
-//   let val ="";
-//   for(let i=0; i< displayCollabArr.length; i++){
-//     val += displayCollabArr[i] + '  ';
-//   }
-//   colab.innerHTML = val ? val:'';
-  
-
-// }
-
 function displayNotesCollab(i) {
- 
-  
+
+
   console.log(i);
-  
-      postService('post', "/notes/"+i+"/AddcollaboratorsNotes", detailsObj)
-      .then((res) => {
-        console.log(res)
-        getnote();
-  
-      })
-      .catch((err) => {
-        console.log(err)
-      })
- 
+
+  postService('post', "/notes/" + i + "/AddcollaboratorsNotes", detailsObj)
+    .then((res) => {
+      console.log(res)
+      getnote();
+
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+
 }
